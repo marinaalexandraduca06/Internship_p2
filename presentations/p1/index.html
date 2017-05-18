@@ -1,0 +1,615 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="/css/reveal.css">
+		<link rel="stylesheet" href="/css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="/lib/css/zenburn.css">
+
+		<link rel="stylesheet" href="/css/boostrap/bootstrap.css">
+		<link rel="stylesheet" href="/css/boostrap/bootstrap-theme.css">
+
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '/css/print/pdf.css' : '/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>WEB CONTEXT</section>
+				<section>
+					<section>INTERNET</section>
+					<section>INTERconnected NETwork</section>
+					<section>
+						<img src="/images/internetHappensIn60s.png">
+					</section>
+					<section>
+						<img src="/images/network_infrastructure.gif">
+					</section>
+					<section>
+						run <code>traceroute www.google.ro</code>
+					</section>
+					<section>
+						<img src="/images/internet_routing_hierarchy.gif">
+						<ul>
+							<li>NSP=Network Service Provider</li>
+							<li>NAP=Network Access Points</li>
+						</ul>
+					</section>
+					<section>
+						<h2>DNS Resolution</h2>
+						<div class="row">
+						  <div class="col-md-8">
+								<img src="/images/DNS_Resolution.gif">
+							</div>
+						  <div class="col-md-4">
+								<div class="row">
+									<img src="/images/An_example_of_theoretical_DNS_recursion.svg.png">
+								</div>
+								<div class="row">
+									<img src="/images/DNS_in_the_real_world.svg.png">
+								</div>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3>Protocol Stacks and Packets</h2>
+						<div class="row">
+							<div class="col-md-5">
+								<img src="/images/protocol_stacks_and_packets.gif">
+							</div>
+							<div class="col-md-7">
+								<table cellpadding="8" border="1" style="font-size: 17px">
+								  <tbody>
+						        <tr>
+						          <th>Protocol Layer</th>
+						          <th>Comments</th></tr>
+						        <tr>
+						          <td>Application Protocols Layer</td>
+						          <td>Protocols specific to applications such as WWW, e-mail, FTP,
+						          etc.</td></tr>
+						        <tr>
+						          <td>Transmission Control Protocol Layer</td>
+						          <td>TCP directs packets to a specific application on a computer
+						            using a port number.</td></tr>
+						        <tr>
+						          <td>Internet Protocol Layer</td>
+						          <td>IP directs packets to a specific computer using an IP
+						        address.</td></tr>
+						        <tr>
+						          <td>Hardware Layer</td>
+						          <td>Converts binary packet data to network signals and
+						            back.<br>(E.g. ethernet network card, modem for phone lines,
+						        etc.)
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<aside class="notes">
+								Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+						</aside>
+					</section>
+
+					<section>
+						<h3>TCP/IP PACKETS</h3>
+						<div class="row">
+							<div class="col-md-7">
+								<img src="/images/TCP_packet.gif">
+							</div>
+							<div class="col-md-5">
+								<table cellpadding="8" border="1" style="font-size: 15px;">
+									<tbody>
+										<tr>
+											<td>
+												<font face="arial, times new roman">Listed below are the port numbers for some of the more commonly used Internet services.
+													<p>
+													</p>
+													<center>
+														<table border="0">
+															<tbody>
+																<tr>
+																	<td width="100">FTP</td>
+																	<td width="100">20/21</td>
+																</tr>
+																<tr>
+																	<td>Telnet</td>
+																	<td>23</td>
+																</tr>
+																<tr>
+																	<td>SMTP</td>
+																	<td>25</td>
+																</tr>
+																<tr>
+																	<td>HTTP</td>
+																	<td>80</td>
+																</tr>
+															</tbody>
+														</table>
+													</center>
+												</font>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-7">
+								<img src="/images/IP_packet.gif">
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<section>
+
+					<section>
+						HyperText Transfer Protocol (HTTP)
+					</section>
+
+					<section>
+						<img src="/images/HTTP_1.png" >
+					</section>
+
+					<section>
+						<h3>HTTP - Browser</h3>
+						<img src="/images/HTTP_Steps.png" >
+					</section>
+
+					<section>
+						<h3>Uniform Resource Locator (URL)</h3>
+						<p>There are more parts in a URL:</p>
+						<pre class="code-syntax" style="width:100%"><em>protocol</em>://<em>hostname</em>:<em>port</em>/<em>path-and-file-name</em>?<em>param1=val1</em>&<em>param2=val2</em></pre>
+						<ol style="font-size: 15px">
+							<li><em>Protocol</em>: The application-level protocol used by the client and server, e.g., HTTP, FTP, and telnet.</li>
+							<li><em>Hostname</em>: The DNS domain name (e.g., <code>www.nowhere123.com</code>) or IP address (e.g., 192.128.1.2) of the server.</li>
+							<li><em>Port</em>: The TCP port number that the server is listening for incoming requests from the clients.</li>
+							<li><em>Path-and-file-name</em>: The name and location of the requested resource, under the server document base directory.</li>
+							<li><em>Parameters</em>: The names and values of the url parameters.</li>
+						</ol>
+					</section>
+
+					<section>
+						<h3>HTTP over TCP/IP<h3>
+						<div class="well" style="font-size: 17px">HTTP is a client-server application-level protocol. It typically runs over a TCP/IP connection, as illustrated.</div>
+						<img src="/images/HTTP_OverTCPIP.png" >
+					</section>
+
+					<section>
+						<h3>HTTP Protocol</h3>
+							<div class="well" style="font-size: 17px">Request</div>
+							<img src="/images/HTTP_RequestMessageExample.png">
+
+							<div class="well" style="font-size: 17px">Response</div>
+							<img src="/images/HTTP_ResponseMessageExample.png">
+					</section>
+
+					<section>
+						<h3>HTTP Request Methods</h3>
+						<ul style="font-size: 17px;">
+							<li><b>GET</b>: A client can use the GET request to get a web resource from the server.</li>
+							<li><b>POST</b>: Used to post data up to the web server.</li>
+							<li><b>PUT</b>:  Ask the server to store the data (full update of an entity).</li>
+							<li><b>PATCH</b>:  Ask the server to store the data. (partial update of an entity)</li>
+							<li><b>DELETE</b>: Ask the server to delete the data.</li>
+							<li><b>OPTIONS</b>: Ask the server to return the list of request methods it supports.</li>
+							<li><b>CONNECT</b>:  Used to tell a proxy to make a connection to another host and simply reply the content, without attempting to parse or cache it.  This is often used to make SSL connection through the proxy.</li>
+							<li>Other extension methods.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>HTTP access control (CORS)</h3>
+						<img style="height: 500px" src="/images/CORS_principle.png" >
+					</section>
+
+					<section>
+						<h3>HTTP CORS Preflight Steps</h3>
+						<img style="height: 570px" src="/images/HTTP_prelight_steps.png" >
+					</section>
+
+					<section>
+						<h3>CURL tool</h3>
+						<div style="font-size: 17px;">
+							<p>
+								<pre><code>curl http://vremea.meteoromania.ro</code></pre>
+							</p>
+							<p>
+								<pre><code>curl --head http://vremea.meteoromania.ro</code></pre>
+							</p>
+							<p>
+								<pre><code>curl --head -v http://vremea.meteoromania.ro</code></pre>
+							</p>
+							<p>
+								<pre><code>curl -XPUT 'http://httpbin.org/put' -d'
+{
+  "name": "John Doe",
+  "age": 30
+}
+'</code></pre>
+							</p>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						HTML
+					</section>
+
+					<section>
+						<ul>
+							<li>
+								HTML (HyperText Markup Language) is a markup language
+							</li>
+							<li>
+								HTML is NOT a programming language
+							</li>
+							<li>
+								HTML is used to tell your browser how to structure the webpages you visit
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<img src="/images/HTML_grumpy-cat-small.png">
+					</section>
+
+					<section>
+						<h6>Nesting elements</h6>
+						<pre><code><p>My cat is <strong>very</strong> grumpy.</p></code></pre>
+					</section>
+
+					<section>
+						<h6>Block versus inline elements</h6>
+						<div class="row">
+							<ul style="font-size: 19px">
+								<li>
+									<strong style="font-size: 120%">Block level elements</strong> form a visible block on a page
+									<br>they will appear on a <strong>new line</strong> <strong>from</strong> whatever content went <strong>before</strong> it,
+									<br>and any content that goes <strong>after</strong> it will also appear on a <strong>new line</strong>.
+								</li>
+								<li>
+									<strong style="font-size: 120%">Inline elements</strong> are those that are <strong>contained within block</strong> level elements;
+									<br> An inline element will <strong>not cause a new line</strong> to appear in the document
+								</li>
+								<li>
+								</li>
+							</ul>
+						</div>
+
+						<div class="row">
+							<pre><code>
+<em>first</em><em>second</em><em>third</em>
+<p>fourth</p><p>fifth</p><p>sixth</p>
+							</pre></code>
+
+							<p>Output: </p>
+							<div style="font-size: 19px;">
+								<em>first</em><em>second</em><em>third</em>
+								<p>fourth</p><p>fifth</p><p>sixth</p>
+							</div>
+						</div>
+					</section>
+
+          <section>
+						<h3>Empty elements</h3>
+            <pre><code><img src="https://raw.githubusercontent.com/mdn/beginner-html-site/gh-pages/images/firefox-icon.png"></pre></code>
+            <p>This would output the following on your page:</p>
+            <img src="https://raw.githubusercontent.com/mdn/beginner-html-site/gh-pages/images/firefox-icon.png">
+          </section>
+
+          <section>
+            <h3>Attributes</h3>
+            <img src="/images/HTML_grumpy-cat-attribute-small.png"></img>
+            <h3>Boolean attributes</h3>
+            <pre>
+&lt;input type="text"&gt;
+&lt;input type="text" disabled &gt;
+            </pre>
+            <p>This would output the following on your page:</p>
+            <input type="text">
+            <input type="text" disabled >
+          </section>
+
+          <section>
+            <h3>Anatomy of an HTML document</h3>
+            <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head>
+    &lt;meta charset="utf-8"&gt;
+    &lt;title>My test page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;This is my page&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+            </pre></code>
+          </section>
+
+          <section>
+            <h3 style="font-size: 27px">Entity references: including special characters in HTML</h3>
+            <table style="font-size: 19px">
+             <thead>
+              <tr>
+               <th scope="col">Literal character</th>
+               <th scope="col">Character reference equivalent</th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <td>&lt;</td>
+               <td>&amp;lt;</td>
+              </tr>
+              <tr>
+               <td>&gt;</td>
+               <td>&amp;gt;</td>
+              </tr>
+              <tr>
+               <td>"</td>
+               <td>&amp;quot;</td>
+              </tr>
+              <tr>
+               <td>'</td>
+               <td>&amp;apos;</td>
+              </tr>
+              <tr>
+               <td>&amp;</td>
+               <td>&amp;amp;</td>
+              </tr>
+             </tbody>
+            </table>
+
+            <h3 style="font-size: 27px">HTML comments</h3>
+<pre><code>
+<p>I'm not inside a comment</p>
+
+<!-- <p>I am!</p> -->
+</pre></code>
+
+<p>Output: </p>
+<p>I'm not inside a comment</p>
+<!-- <p>I am!</p> -->
+
+          </section>
+
+        <section>
+          <h3>Semantic HTML</h3>
+          <div class="well">In your HTML code, you can mark up sections of content based on their functionality</div>
+
+          <pre style="font-size:19px;"><code class="html">
+header: &lt;header&gt;.
+navigation bar: &lt;nav&gt;.
+main content: &lt;main&gt;, with various content subsections represented by &lt;article&gt;, &lt;section&gt;, and &lt;div&gt; elements.
+sidebar: &lt;aside&gt;; often placed inside &lt;main&gt;.
+footer: &lt;footer&gt;.
+          </pre></code>
+
+          <div class="well">Example in Plunker <a href="https://plnkr.co/edit/1pcg7zXoOAnTEn3K8Pqm?p=preview">https://plnkr.co/edit/1pcg7zXoOAnTEn3K8Pqm?p=preview</a></div>
+        </section>
+
+				</section>
+
+        <section>
+          <section>
+            <h3>CSS (Cascading Style Sheets)</h3>
+            <p>
+              CSS is used to style and lay out webpages — for example:
+              <ul>
+                <li>to alter the font, color, size and spacing of your content</li>
+                <li>split page content into multiple columns</li>
+                <li>add animations and other decorative features</li>
+              </ul>
+            </p>
+          </section>
+
+
+
+
+          <section>
+            <h3>CSS (Cascading Style Sheets)</h3>
+            <div class="row">
+              <div class="col-md-5">
+                <pre><code style="font-size: 15px;">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;My CSS experiment&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello World!&lt;/h1&gt;
+  &lt;p&gt;This is my first CSS example&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+              </code></pre>
+            </div>
+            <div class="col-md-5">
+              <pre><code style="font-size: 15px;">
+h1 {
+  color: blue;
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+p {
+  color: red;
+}
+              </code></pre>
+            </div>
+          </div>
+          <div class="row">
+            <iframe src="/presentations/p1/iframes/css_example_1.html" width="400" height="300">
+              <p>Your browser does not support iframes.</p>
+            </iframe>
+          </div>
+        </section>
+
+        <section>
+          <h3>How does CSS actually work</h3>
+          <img src="/images/css_rendering.svg" >
+        </section>
+
+        <section>
+          <h3>DOM representation</h3>
+          <div class="row">
+            <div class="col-md-7">
+              <pre><code style="font-size: 15px">
+<style>
+  span.dom-representation {
+    border: 1px solid black;
+    background-color: lime;
+  }
+</style>
+<p>
+  Let's use:
+  <span class="dom-representation">Cascading</span>
+  <span class="dom-representation" >Style</span>
+  <span class="dom-representation" >Sheets</span>
+</p>
+              </code></pre>
+            </div>
+            <div class="col-md-5">
+              <pre><code style="font-size: 15px">
+    P
+    ├─ "Let's use:"
+    ├─ SPAN
+    |  └─ "Cascading"
+    ├─ SPAN
+    |  └─ "Style"
+    └─ SPAN
+       └─ "Sheets"
+              </code></pre>
+            </div>
+          </div>
+          <p>
+            And the output is:
+          </p>
+          <style>
+            span.dom-representation {
+              border: 1px solid black;
+              background-color: lime;
+            }
+          </style>
+          <p>
+            Let's use:
+            <span class="dom-representation">Cascading</span>
+            <span class="dom-representation" >Style</span>
+            <span class="dom-representation" >Sheets</span>
+          </p>
+        </section>
+
+        <section>
+          <h3>How to apply your CSS to your HTML</h3>
+          <div class="row">
+            <div class="col-md-5">
+              <p>External stylesheet</p>
+              <pre><code style="font-size: 15px">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My CSS experiment&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;p&gt;This is my first CSS example&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+              </code></pre>
+            </div>
+
+            <div class="col-md-5">
+              <p>style.css: </p>
+              <pre><code style="font-size: 15px">
+h1 {
+  color: blue;
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+p {
+  color: red;
+}
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>How to apply your CSS to your HTML</h3>
+          <div class="row">
+            <div class="col-md-9">
+              <p>Internal (Embedded) stylesheet</p>
+              <pre><code style="font-size: 15px">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My CSS experiment&lt;/title&gt;
+    <style>
+      h1 {
+        color: blue;
+        background-color: yellow;
+        border: 1px solid black;
+      }
+
+      p {
+        color: red;
+      }
+    </style>
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;p&gt;This is my first CSS example&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+			</div>
+		</div>
+
+		<script src="/lib/js/head.min.js"></script>
+		<script src="/js/reveal.js"></script>
+		<script src="/js/jquery-3.2.1.js"></script>
+		<script src="/js/boostrap/bootstrap.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '/plugin/markdown/marked.js' },
+					{ src: '/plugin/markdown/markdown.js' },
+					{ src: '/plugin/notes/notes.js', async: true },
+					{ src: '/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

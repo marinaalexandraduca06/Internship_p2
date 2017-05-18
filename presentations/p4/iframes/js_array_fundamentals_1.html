@@ -1,0 +1,70 @@
+<script>
+
+// new operator
+var entries = new Array('Trains', 'Plains', 'Automobiles');
+console.log(entries instanceof Array);
+
+var entries = new Array('Trains', 42, true);
+console.log(entries instanceof Array);
+
+// no new keyword
+// this is valid only for Arrays
+var entries = Array('Trains', 'Plains', 'Automobiles');
+console.log(entries instanceof Array);
+
+var entries = ['Trains', 'Plains', 'Automobiles'];
+console.log(entries instanceof Array);
+
+// access members of an array
+var entries = ['Trains', 'Plains', 'Automobiles'];
+console.log(entries[0]);
+
+// no exception
+var entries = ['Trains', 'Plains', 'Automobiles'];
+console.log(entries[3]);
+
+var entries = new Array(5);
+console.log(entries.length);
+
+var entries = new Array("5");
+console.log(entries.length);
+
+var entries = [];
+console.log(entries.length);
+
+// !!!! 3, one for each comma
+var entries = [,,,];
+console.log(entries.length);
+
+var entries = ['Planes', 'Trains'];
+entries.length = 10;
+console.log(entries.length);
+// automatically all the other 8 elements would be created and assigned to undefined
+
+var entries = ['Planes', 'Trains'];
+entries.length = 1;
+console.log(entries[1]);
+// last element dissapears from an array
+
+var entries = ['Planes', 'Trains', 'Automobiles'];
+entries[2] = 'Cars';
+console.log(entries[2]);
+
+var entries = ['Planes', 'Trains', 'Automobiles'];
+entries[42] = 'Cars';
+console.log(entries[42]);
+console.log(entries.length);
+console.log(entries);
+console.log(entries.toString());
+// all the elements will be created and assigned to
+
+// append a value to an array (one possible way)
+var entries = ['Planes', 'Trains', 'Automobiles'];
+entries[entries.length] = 'Bicycles';
+console.log(entries.length);
+
+// join (implode) the values of an array
+var ratings = [5, 2, 4];
+console.log(ratings.join('|'));
+
+</script>

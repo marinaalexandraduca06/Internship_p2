@@ -1,0 +1,1682 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>Presentation 5</title>
+
+        <link rel="stylesheet" href="/css/reveal.css" />
+        <link rel="stylesheet" href="/css/theme/white.css" />
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="/lib/css/zenburn.css" />
+
+        <link rel="stylesheet" href="/css/boostrap/bootstrap.css" />
+        <link rel="stylesheet" href="/css/boostrap/bootstrap-theme.css" />
+
+        <link rel="stylesheet" href="/css/prism.js/prism.css" />
+        <link rel="stylesheet" href="/css/custom.css" />
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? '/css/print/pdf.css' : '/css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h3>Functions</h3>
+                    <img src="/images/js_functions.png">
+                </section>
+                <section>
+                    <section>
+                        <h3>Naming Functions Expression</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var hireEmployee = function (name) {
+    };
+    console.log(typeof hireEmployee);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var hireEmployee = function (name) {
+        throw ('Error');
+    };
+    hireEmployee('JJ');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var hireEmployee = function (name) {
+        throw ('Error');
+    };
+    var action = hireEmployee;
+    action('JJ');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var hireEmployee = function myHireEmployeeFn(name) {
+        throw ('Error');
+    };
+    var action = hireEmployee;
+    action('JJ');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Constructor Functions</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(typeof Object);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Employee = function (name) {
+        this.name = name;
+    };
+    var newEmployee = new Employee('JJ');
+    console.log(typeof newEmployee);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Employee = function (name) {
+        this.name = name;
+    };
+    var newEmployee = new Employee('JJ');
+    console.log(newEmployee.name);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Employee = function (name, boss) {
+        this.name = name;
+        this.boss = boss;
+    };
+    var newEmployee = new Employee('JJ', 'JD Hogg');
+    console.log(newEmployee.boss);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Employee = function (name) {
+        this.name = name;
+    };
+    var e1 = new Employee('JJ');
+    var e2 = new Employee('JV');
+    console.log(e1 === e2);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Employee = function (name) {
+        this.name = name;
+    };
+    var e1 = new Employee('JJ');
+    var e2 = new Employee('JV');
+    console.log(e1.__proto__ === e2.__proto__);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Employee = function (name) {
+        this.name = name;
+        this.giveRaise = function () {
+        };
+    };
+    var e1 = new Employee('JJ');
+    var e2 = new Employee('JV');
+    console.log(e1.giveRaise === e2.giveRaise);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Employee = function (name) {
+        this.name = name;
+        this.giveRaise = function () {
+        };
+    };
+    console.log(typeof Employee.prototype);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Employee = function (name) {
+        this.name = name;
+        this.giveRaise = function () {
+        };
+    };
+    console.log(Employee.prototype === Object.prototype);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Employee = function (name) {
+        this.name = name;
+    };
+    Employee.prototype.giveRaise = function () {
+    };
+    var e1 = new Employee('JJ');
+    var e2 = new Employee('JV');
+    console.log(e1.giveRaise === e2.giveRaise);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Employee = function (name) {
+        this.name = name;
+        this.salary = 50000;
+    };
+    Employee.prototype.giveRaise = function (raise) {
+        this.salary += raise;
+    };
+    var e1 = new Employee('JJ');
+    var e2 = new Employee('JV');
+    e1.giveRaise(100000);
+    console.log(e1.salary);
+    console.log(e2.salary);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>"this" keyword </h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(typeof this);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // Consider that we are working in a browser
+    console.log(this === window);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var name = 'Jeff';
+    console.log(this.name);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var updateSalary = function () {
+        console.log(this === window);
+    };
+    updateSalary();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var employee = {
+        name: 'Jeff',
+        updateSalary: function () {
+            console.log(this);
+        }
+    };
+    employee.updateSalary();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var employee = {
+        name: 'Jeff',
+        updateSalary: function () {
+            var fn = function () {
+                console.log(this);
+            };
+            fn();
+        }
+    };
+    employee.updateSalary();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var employee = {
+        name: 'Jeff',
+        updateSalary: function () {
+            var fn = function () {
+                console.log(this === window);
+            };
+            fn();
+        }
+    };
+    employee.updateSalary();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Address = function (line1) {
+        this.line1 = line1;
+        console.log(this);
+    };
+    var addr = new Address('123 State St.');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var Address = function (line1) {
+        this.line1 = line1;
+    };
+    Address.prototype.updateZipCode = function () {
+        console.log(this);
+    };
+    var addr = new Address('123 State St.');
+    addr.updateZipCode();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Calling Functions</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var updateZipCode = function () {
+        console.log(this);
+    };
+    updateZipCode();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var updateZipCode = function () {
+        console.log(this);
+    };
+    updateZipCode.call({});
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var updateZipCode = function () {
+        console.log(this);
+    };
+    updateZipCode.call({ zip: '11787'});
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var updateZipCode = function () {
+        console.log(this);
+    };
+    var zipCode = {
+        zip: '11787'
+    };
+    updateZipCode.call(zipCode);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var updateZipCode = function (newZip, country) {
+        console.log(newZip + ' ' + country);
+    };
+    var zipCode = {
+        zip: '11787'
+    };
+    updateZipCode.call(zipCode, '11888', 'us');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var updateZipCode = function (newZip, country) {
+        console.log(newZip + ' ' + country);
+    };
+    var zipCode = {
+        zip: '11787'
+    };
+    updateZipCode.apply(zipCode, ['11888', 'us']);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var updateZipCode = function (newZip, country) {
+        console.log(newZip + ' ' + country);
+    };
+    var zipCode = {
+        zip: '11787'
+    };
+    updateZipCode.apply(zipCode, '11888', 'us');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Closures</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var salaryUpdater = function (salary) {
+        var currentSalary = salary;
+        var generator = function () {
+            currentSalary *= 2;
+            return currentSalary;
+        };
+        return generator;
+    };
+    var updateFn = salaryUpdater(50000);
+    console.log(updateFn());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    var salaryUpdater = function (salary) {
+        var currentSalary = salary;
+        var generator = function () {
+            currentSalary += 10000;
+            return currentSalary;
+        };
+        return generator;
+    };
+    var updateFn = salaryUpdater(50000);
+    updateFn();
+    console.log(updateFn());
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Immediately Invoked Function Expressions(IIFEs)</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    (function () {
+        console.log('Executed!');
+    })();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    (function () {
+        console.log('Executed!');
+    }());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    (function () {
+        var employeeName = 'Jill';
+    })();
+    console.log(employeeName);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var app = {};
+    (function (ns) {
+        ns.name = 'None';
+    })(app);
+    console.log(app.name);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var app = {};
+    var jQuery = {};
+    (function (ns, $) {
+        ns.name = 'None';
+        console.log($ === jQuery);
+    })(app, jQuery);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var app = {};
+    var jQuery = {};
+    (function (ns, $, undefined) {
+        ns.name = 'None';
+        console.log(undefined);
+    })(app, jQuery);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    +function () {
+        var employeeName = 'Jill';
+        console.log('Executed!');
+    }();
+    console.log(employeeName);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Recursion</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    var orgChart = {
+        name: 'Michael',
+        subordinates: [
+            {
+                name: 'Andy',
+                subordinates: [
+                    {
+                        name: 'Dwight', subordinates: []
+                    },
+                    {
+                        name: 'Kevin', subordinates: []
+                    }
+                ]
+            }
+        ]
+    };
+    var fn = function (topEmployee) {
+        console.log(topEmployee.name);
+        for (var i = 0; i < topEmployee.subordinates.length; i++)
+        fn(topEmployee.subordinates[i]);
+    };
+    fn(orgChart);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    var orgChart = {
+        name: 'Michael',
+        subordinates: [
+            {
+                name: 'Andy',
+                subordinates: [
+                    {
+                        name: 'Dwight', subordinates: []
+                    },
+                    {
+                        name: 'Kevin', subordinates: []
+                    }
+                ]
+            }
+        ]
+    };
+    var fn = function (topEmployee) {
+        console.log(topEmployee.name);
+        for (var i = 0; i < topEmployee.subordinates.length; i++)
+        fn(topEmployee.subordinates[i]);
+    };
+    var fn2 = fn;
+    fn = null;
+    fn2(orgChart);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var orgChart = {
+        name: 'Michael',
+        subordinates: [
+            {
+                name: 'Andy',
+                subordinates: [
+                    {
+                        name: 'Dwight', subordinates: []
+                    },
+                    {
+                        name: 'Kevin', subordinates: []
+                    }
+                ]
+            }
+        ]
+    };
+    var fn = function showAllEmployees (topEmployee) {
+        console.log(topEmployee.name);
+        for (var i = 0; i < topEmployee.subordinates.length; i++)
+        showAllEmployees(topEmployee.subordinates[i]);
+    };
+    var fn2 = fn;
+    fn = null;
+    fn2(orgChart);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <h3>BOM(Browser Object Model) and <br/> DOM(Document Object Model)</h3>
+                    <img src="/images/js_bom_and_dom.png">
+                </section>
+                <section>
+                    <section>
+                        <h3>The window Object and Timers</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(window.screenLeft + ', ' + window.screenTop);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(window.innerWidth + ', ' + window.outerWidth);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    window.open('https://www.google.ro', '_blank');
+
+    // Popups must be enabled in your browser;
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What will happen?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(new Date().getSeconds());
+    setTimeout(function () {
+        console.log(new Date().getSeconds());
+    }, 1000);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(new Date().getSeconds());
+    var id = setTimeout(function () {
+        console.log(new Date().getSeconds());
+    }, 1000);
+    clearTimeout(id);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(new Date().getSeconds());
+    var id = setInterval(function () {
+        var secs = new Date().getSeconds();
+        console.log(secs);
+        if (secs === 10)
+            clearInterval(id);
+    }, 1000);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>System Dialogs</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    alert('Hello World!');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What's the result in the browser?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    if (confirm('Delete EVERYTHING?!')) {
+        console.log('You asked for it!')
+    }
+    else {
+        console.log('Maybe next time...');
+    }
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What's the result in the browser and console?</p>
+                        <p>What happens if we close the dialog using the close button?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var result = prompt('Your name?');
+    console.log(result);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the browser and console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>The location Object</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(location.href);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(location.host);
+
+    console.log(location.port);
+
+    console.log(location.protocol);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    location.assign('https://www.google.ro');
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What occurs in the browser?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Document Basics</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of html page
+    &lt;article id="article1"&gt;
+        &lt;h3&gt;Title goes here&lt;/h3&gt;
+        &lt;p&gt;Paragraph 1&lt;/p&gt;
+        &lt;p&gt;Paragraph 2&lt;/p&gt;
+        &lt;p&gt;Paragraph 3&lt;/p&gt;
+    &lt;/article&gt;
+
+    // javascript
+    var element = document.getElementById('article1');
+    console.log(element);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of html page
+    &lt;article id="article1"&gt;
+        &lt;h3&gt;Title goes here&lt;/h3&gt;
+        &lt;p&gt;Paragraph 1&lt;/p&gt;
+        &lt;p&gt;Paragraph 2&lt;/p&gt;
+        &lt;p&gt;Paragraph 3&lt;/p&gt;
+    &lt;/article&gt;
+
+    // javascript
+    var elements = document.getElementsByTagName('p');
+    console.log(elements);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of html page
+    &lt;article id="article1"&gt;
+        &lt;h3&gt;Title goes here&lt;/h3&gt;
+        &lt;p&gt;Paragraph 1&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 2&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 3&lt;/p&gt;
+    &lt;/article&gt;
+
+    // javascript
+    var elements = document.getElementsByClassName('special');
+    console.log(elements);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of html page
+    &lt;article id="article1" class="my-custom-class"&gt;
+        &lt;h3&gt;Title goes here&lt;/h3&gt;
+        &lt;p&gt;Paragraph 1&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 2&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 3&lt;/p&gt;
+    &lt;/article&gt;
+
+    // javascript
+    var a = document.getElementById('article1');
+    console.log(a.getAttribute('class'));
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of html page
+    &lt;article id="article1" class="my-custom-class"&gt;
+        &lt;h3&gt;Title goes here&lt;/h3&gt;
+        &lt;p&gt;Paragraph 1&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 2&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 3&lt;/p&gt;
+    &lt;/article&gt;
+
+    // javascript
+    var a = document.getElementById('article1');
+    a.setAttribute('class', 'dynamic-style');
+    console.log(a.getAttribute('class'));
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of html page
+    &lt;article id="article1" class="my-custom-class"&gt;
+        &lt;h4&gt;Title goes here&lt;/h4&gt;
+        &lt;p&gt;Paragraph 1&lt;/p&gt;
+    &lt;/article&gt;
+
+    // javascript
+    var a = document.getElementById('article1');
+    console.log(a.childNodes);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Query Selectors</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of html page
+    &lt;article id="article1" class="my-custom-class"&gt;
+        &lt;h3&gt;Title goes here&lt;/h3&gt;
+        &lt;p&gt;Paragraph 1&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 2&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 3&lt;/p&gt;
+    &lt;/article&gt;
+
+    // javascript
+    var element = document.querySelector('article');
+    console.log(element);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of html page
+    &lt;article id="article1" class="my-custom-class"&gt;
+        &lt;h3&gt;Title goes here&lt;/h3&gt;
+        &lt;p&gt;Paragraph 1&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 2&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 3&lt;/p&gt;
+    &lt;/article&gt;
+
+    // javascript
+    var element = document.querySelector('#article1');
+    console.log(element);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of html page
+    &lt;article id="article1" class="my-custom-class"&gt;
+        &lt;h3&gt;Title goes here&lt;/h3&gt;
+        &lt;p&gt;Paragraph 1&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 2&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 3&lt;/p&gt;
+    &lt;/article&gt;
+
+    // javascript
+    var elements = document.querySelector('.special');
+    console.log(elements);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of html page
+    &lt;article id="article1" class="my-custom-class"&gt;
+        &lt;h3&gt;Title goes here&lt;/h3&gt;
+        &lt;p&gt;Paragraph 1&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 2&lt;/p&gt;
+        &lt;p class="special"&gt;Paragraph 3&lt;/p&gt;
+    &lt;/article&gt;
+
+    // javascript
+    var elements = document.querySelectorAll('.special');
+    console.log(elements);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <h3>Event Handlers</h3>
+                    <img src="/images/js_events.png">
+                </section>
+                <section>
+                    <section>
+                        <h3>Events</h3>
+                    </section>
+                    <section>
+                        <h3>User Interface Events</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>load</p>
+                                <p>unload</p>
+                                <p>abort</p>
+                                <p>error</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>select</p>
+                                <p>resize</p>
+                                <p>scroll</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Mouse and Mouse Wheel Events</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>click</p>
+                                <p>dblclick</p>
+                                <p>mousedown</p>
+                                <p>mouseenter</p>
+                                <p>mouseleave</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>mousemove</p>
+                                <p>mouseout</p>
+                                <p>mouseover</p>
+                                <p>mouseup</p>
+                                <p>mousewheel</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Keyboard and Text Events</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>keydown</p>
+                                <p>keypress</p>
+                                <p>keyup</p>
+                                <p>textInput</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Focus Events</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>blur</p>
+                                <p>focus</p>
+                                <p>focusin</p>
+                                <p>focusout</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>HTML5 Events</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>contextmenu</p>
+                                <p>beforeunload</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Touch Events</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>touchstart</p>
+                                <p>touchmove</p>
+                                <p>touchend</p>
+                                <p>touchcancel</p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>The Event Object</h3>
+                    </section>
+                    <section>
+                        <h3>Event Object Properties</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>bubbles</p>
+                                <p>cancelable</p>
+                                <p>currentTarget</p>
+                                <p>defaultPrevented</p>
+                                <p>detail</p>
+                                <p>eventPhase</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>preventDefault()</p>
+                                <p>stopImmediatePropagation()</p>
+                                <p>stopPropagation()</p>
+                                <p>target</p>
+                                <p>trusted</p>
+                                <p>type</p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Handling Events</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;input type="button" value="Submit" onclick="alert('foo')" /&gt;
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the browser when the button is pressed?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;input id="submit1" type="button" onclick ="submitForm()" /&gt;
+
+    // JavaScript file
+    function submitForm() {
+        console.log('in submitForm');
+    }
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the browser when the button is pressed?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;input id="submit1" type="button" onclick="submitForm(this)" /&gt;
+
+    // JavaScript file
+    function submitForm(element) {
+        console.log(element.id);
+    }
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the browser when the button is pressed?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;input id="submit1" type="button" onclick="submitForm(this, event)" /&gt;
+
+    // JavaScript file
+    function submitForm(element, event) {
+        console.log(event.type);
+    }
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the browser when the button is pressed?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;input id="submit1" type="button" /&gt;
+
+    // JavaScript file
+    var button = document.getElementById('submit1');
+
+    button.onclick = function () {
+        console.log('Button Clicked');
+    }
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the browser when the button is pressed?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;input id="submit1" type="button" /&gt;
+
+    // JavaScript file
+    var button = document.getElementById('submit1');
+
+    button.onclick = function () {
+        console.log('Button Clicked');
+    }
+
+    button.onclick = null;
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the browser when the button is pressed?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Event Listeners</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;input id="submit1" type ="button" /&gt;
+
+    // JavaScript file
+    var button = document.getElementById('submit1');
+
+    button.addEventListener('click', function () {
+        console.log('Button Clicked');
+    });
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the browser when the button is pressed?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;input id="submit1" type ="button" /&gt;
+
+    // JavaScript file
+    var button = document.getElementById('submit1');
+
+    button.addEventListener('click', function () {
+        console.log('Button Clicked');
+    });
+
+    button.addEventListener('click', function () {
+        console.log('Another Listener Function');
+    });
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the browser when the button is pressed?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;input id="submit1" type ="button" /&gt;
+
+    // JavaScript file
+    var button = document.getElementById('submit1');
+
+    var submitHandler = function formSubmitHandler() {
+        console.log('in formSubmitHandler()');
+    };
+
+    button.addEventListener('click', submitHandler);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the browser when the button is pressed?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;input id="submit1" type ="button" /&gt;
+
+    // JavaScript file
+    var button = document.getElementById('submit1');
+
+    var submitHandler = function formSubmitHandler() {
+        console.log('in formSubmitHandler()');
+    };
+
+    button.addEventListener('click', submitHandler);
+    button.removeEventListener('click', submitHandler);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the browser when the button is pressed?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Event Bubbling</h3>
+                    </section>
+                    <section>
+                        <div style="margin-bottom:20px;">
+                            <div id="div1" style="width:200px; height:200px; background-color: blue;">
+                                <div id="div2" style="width:100px; height:100px; background-color: red;"></div>
+                            </div>
+                        </div>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;div id="div1" style="width:200px; height:200px; background-color: blue;"&gt;
+        &lt;div id="div2" style="width:100px; height:100px; background-color: red;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    // JavaScript file
+    var div1 = document.getElementById('div1');
+    var div2 = document.getElementById('div2');
+
+    var clickHandler = function divClickHandler(event) {
+        console.log(this.id);
+    };
+
+    div1.addEventListener('click', clickHandler, false);
+    div2.addEventListener('click', clickHandler, false);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console when div2 is clicked?</p>
+                    </section>
+                    <section>
+                        <div style="margin-bottom:20px;">
+                            <div id="div1" style="width:200px; height:200px; background-color: blue;">
+                                <div id="div2" style="width:100px; height:100px; background-color: red;"></div>
+                            </div>
+                        </div>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;div id="div1" style="width:200px; height:200px; background-color: blue;"&gt;
+        &lt;div id="div2" style="width:100px; height:100px; background-color: red;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    // JavaScript file
+    var div1 = document.getElementById('div1');
+    var div2 = document.getElementById('div2');
+
+    var clickHandler = function divClickHandler(event) {
+        console.log(this.id);
+    };
+
+    div1.addEventListener('click', clickHandler, true);
+    div2.addEventListener('click', clickHandler, true);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console when div2 is clicked?</p>
+                    </section>
+                    <section>
+                        <div style="margin-bottom:20px;">
+                            <div id="div1" style="width:200px; height:200px; background-color: blue;">
+                                <div id="div2" style="width:100px; height:100px; background-color: red;"></div>
+                            </div>
+                        </div>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;div id="div1" style="width:200px; height:200px; background-color: blue;"&gt;
+        &lt;div id="div2" style="width:100px; height:100px; background-color: red;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    // JavaScript file
+    var div1 = document.getElementById('div1');
+    var div2 = document.getElementById('div2');
+
+    var clickHandler = function divClickHandler(event) {
+        console.log(this.id);
+        event.stopPropagation();
+    };
+
+    div1.addEventListener('click', clickHandler, true);
+    div2.addEventListener('click', clickHandler, true);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console when div2 is clicked?</p>
+                    </section>
+                    <section>
+                        <div style="margin-bottom:20px;">
+                            <div id="div1" style="width:200px; height:200px; background-color: blue;">
+                                <div id="div2" style="width:100px; height:100px; background-color: red;"></div>
+                            </div>
+                        </div>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+    // body of HTML
+    &lt;div id="div1" style="width:200px; height:200px; background-color: blue;"&gt;
+        &lt;div id="div2" style="width:100px; height:100px; background-color: red;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    // JavaScript file
+    var div1 = document.getElementById('div1');
+    var div2 = document.getElementById('div2');
+
+    var clickHandler = function divClickHandler(event) {
+        console.log(this.id);
+        event.stopPropagation();
+        event.preventDefault();
+    };
+
+    div1.addEventListener('click', clickHandler, true);
+    div2.addEventListener('click', clickHandler, true);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What shows in the console when div2 is clicked?</p>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+
+        <script src="/lib/js/head.min.js"></script>
+        <script src="/js/reveal.js"></script>
+        <script src="/js/jquery-3.2.1.js"></script>
+        <script src="/js/boostrap/bootstrap.js"></script>
+        <script src="/js/prism.js/prism.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+                width: "100%",
+                height: "100%",
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '/plugin/markdown/marked.js' },
+                    { src: '/plugin/markdown/markdown.js' },
+                    { src: '/plugin/notes/notes.js', async: true },
+                    // { src: '/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>

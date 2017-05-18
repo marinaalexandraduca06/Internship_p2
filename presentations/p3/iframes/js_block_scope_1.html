@@ -1,0 +1,66 @@
+<script>
+
+try {
+  throw 123;
+}
+catch (e) {
+  console.log(e);
+}
+
+
+
+
+
+
+
+
+
+console.log(e);
+try {
+  throw 123;
+}
+catch (e) {
+}
+
+
+
+
+
+
+
+
+
+
+
+try {
+  console.log('in try:' + e);
+  throw 123;
+}
+catch (e) {
+  console.log(e);
+}
+
+
+
+
+
+
+
+
+
+
+try {
+  throw 'myError'
+}
+catch (blockLevelVar) {
+// blockLevlVar is in block scope
+// ...
+};
+console.log(blockLevelVar);
+
+
+
+
+
+
+</script>

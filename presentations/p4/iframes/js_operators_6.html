@@ -1,0 +1,128 @@
+<script>
+
+var value = !true;
+console.log(value);
+
+var value = !99;
+console.log(value);
+
+var value = !0;
+console.log(value);
+
+var value = !"";
+console.log(value);
+
+var value = !"A";
+console.log(value);
+
+var value = !" ";
+console.log(value);
+
+var value = !new Object();
+console.log(value);
+
+var value = !null;
+console.log(value);
+
+var value = !undefined;
+console.log(value);
+
+var value = !NaN;
+console.log(value);
+
+// convert to boolean
+var value = !!false;
+console.log(value);
+
+// Boolean AND
+var value = true && false;
+console.log(value);
+
+// !!!! only in JS:
+// when the first operand is an object then return the SECOND operand
+var obj = {
+  calc: 'Logical AND'
+};
+var value = obj && 99;
+console.log(value);
+
+var obj = {
+calc: 'Logical AND'
+};
+var value = obj && 0;
+console.log(value);
+
+// if the first operand evaluates to true, it returns the SECOND operand
+var obj = {
+  calc: 'Logical AND'
+};
+var value = true && obj;
+console.log(value);
+
+// !!!! if either of operands is null, null gets returned
+var value = null && 99;
+console.log(value);
+
+// continue
+var value = "Z" && null;
+console.log(value);
+
+// !!!! if either operand is undefined, undefined is the result
+var value = "Z" && undefined;
+console.log(value);
+
+// !!!! if either operand is NaN, NaN is the result
+var value = "Z" && NaN;
+console.log(value);
+
+// !!!! we get false (no error) (it ignores the second operand)
+var value = false && productId;
+console.log(value);
+
+// !!!! we get false (no error) (it ignores the second operand)
+var value = productId && false;
+console.log(value);
+
+// another example of ignoring the second operand, when the first is false
+var productId = 5;
+var value = false && ++productId;
+console.log(productId);
+
+// Boolean OR
+var value = true || false;
+console.log(value);
+
+// !!!! only in JS:
+// when the first operand is an object then return the FIRST operand
+var obj = {
+  calc: 'Logical OR'
+};
+var value = obj || 99;
+console.log(value);
+
+// when the first operand false then return the SECOND operand
+var obj = {
+  calc: 'Logical OR'
+};
+var value = false || 99;
+console.log(value);
+
+// (1) explanation for strange OR behaviour
+var defaultSettings = {
+  who: 'default'
+};
+var userSettings = {
+  who: 'user'
+};
+var value = userSettings || defaultSettings;
+console.log(value);
+
+// (2) explanation for strange OR behaviour
+var defaultSettings = {
+  who: 'default'
+};
+var userSettings;
+var value = userSettings || defaultSettings;
+console.log(value);
+
+</script>

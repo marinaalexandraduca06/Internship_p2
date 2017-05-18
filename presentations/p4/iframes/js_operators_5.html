@@ -1,0 +1,39 @@
+<script>
+
+var num1 = parseInt('1010', 2);
+var num2 = parseInt('0110', 2);
+var total = num1 & num2;
+console.log(total.toString(2));
+
+var num1 = parseInt('1010', 2);
+var num2 = parseInt('0110', 2);
+var total = num1 | num2;
+console.log(total.toString(2));
+
+// xor (exclusive or)
+var num1 = parseInt('1010', 2);
+var num2 = parseInt('0110', 2);
+var total = num1 ^ num2;
+console.log(total.toString(2));
+
+// left shift operator
+var num1 = parseInt('0001', 2);
+num1 = num1 << 2;
+console.log(num1.toString(2));
+
+// right shift operator
+var num1 = parseInt('1000', 2);
+num1 = num1 >> 3;
+console.log(num1.toString(2));
+
+// Sign-propagating right shift
+var num1 = parseInt('1000', 2);
+num1 = num1 >>> 1;
+console.log(num1.toString(2));
+
+// Sign-propagating right shift: negative numbers
+var num1 = -parseInt('1000', 2);
+num1 = num1 >>> 1;
+console.log(num1.toString(2));
+
+</script>

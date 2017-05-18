@@ -1,0 +1,64 @@
+<script>
+
+var total = 9 * 3;
+console.log(total);
+
+// remember to use toFixed(nbrOfDecimalDigits)
+var total = 1.1 * 1.1;
+console.log(total);
+
+// example of where floating point approximations can cause errors in programs
+var total = 1.1 * 1.1;
+console.log(total);
+if (total == 1.21) {
+  console.log('Do important work');
+}
+
+// fix for previous example
+var total = 1.1 * 1.1;
+console.log(total);
+if (total.toFixed(2) == 1.21) {
+  console.log('Fixed!');
+}
+
+var total = 20 * NaN;
+console.log(total);
+
+var total = 20 * undefined;
+console.log(total);
+
+// in numeric context null is treated as a zero
+var total = 20 * null;
+console.log(total);
+
+// remember js looks for valueOf property in objects involved in numeric computations
+var obj = {
+  valueOf: function () { return 100; }
+};
+var total = 4 * obj;
+console.log(total);
+
+var total = 4 * Infinity;
+console.log(total);
+
+var total = 4 * "XYZ";
+console.log(total);
+
+// !!!!!!!
+var total = 9 / 0;
+console.log(total);
+
+// in js it is important to check your numbers for NaN or Infinity or -Infinity
+var total = -9 / 0;
+console.log(total);
+
+var total = 9 / "3";
+console.log(total);
+
+// modulo (remainder)
+var total = 9 % 4;
+console.log(total);
+
+
+
+</script>

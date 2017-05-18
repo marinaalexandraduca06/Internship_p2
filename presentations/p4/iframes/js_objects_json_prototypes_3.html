@@ -1,0 +1,175 @@
+<script>
+
+var task = { };
+Object.defineProperty(
+  task,
+  'text',
+  {
+    value: 'Get this job done!'
+  }
+);
+console.log(task.text);
+
+'use strict';
+var task = {};
+Object.defineProperty(
+  task,
+  'text',
+  {
+    value: 'Get this job done!',
+    writable: true
+  }
+);
+task.text = task.text + ' ... NOW!';
+console.log(task.text);
+
+'use strict';
+var task = {};
+Object.defineProperty(
+  task,
+  'text',
+  {
+    value: 'Get this job done!'
+    // writable: true
+  }
+);
+task.text = task.text + ' ... NOW!';
+console.log(task.text);
+
+'use strict';
+var task = {};
+Object.defineProperty(
+  task,
+  'text',
+  {
+    value: 'Get this job done!',
+    enumerable: true
+  }
+);
+for (var f in task) {
+  console.log(f);
+}
+
+'use strict';
+var task = { };
+Object.defineProperty(
+  task,
+  'text',
+  {
+  value: 'Get this job done!'
+  //enumerable: true
+  }
+);
+for (var f in task) {
+  console.log(f);
+}
+
+'use strict';
+var task = { };
+Object.defineProperty(
+  task,
+  'text',
+  {
+    value: 'Get this job done!',
+    configurable: false
+  }
+);
+Object.defineProperty(
+  task,
+  'text',
+  {
+    value: 'Done!'
+  }
+);
+console.log(task.text);
+
+'use strict';
+var task = { };
+Object.defineProperty(
+  task,
+  'text',
+  {
+    value: 'Get this job done!',
+    configurable: true
+  }
+);
+Object.defineProperty(
+  task,
+  'text',
+  {
+    value: 'Done!'
+  }
+);
+console.log(task.text);
+
+
+// set a getter function
+'use strict';
+var task = {
+  _dueDate: '1/15/16'
+};
+Object.defineProperty(
+  task,
+  'dueDate',
+  {
+    get: function () {
+      return this._dueDate;
+    }
+  }
+);
+console.log(task.dueDate);
+
+
+'use strict';
+var task = {
+  _dueDate: '1/15/16'
+};
+Object.defineProperty(
+  task,
+  'dueDate',
+  {
+    get: function () {
+      return this._dueDate;
+    },
+    set: function (newValue) {
+      this._dueDate = newValue;
+    }
+  }
+);
+task.dueDate = '2/2/16';
+console.log(task.dueDate);
+
+
+// define more properties at the same time
+'use strict';
+var task = { };
+Object.defineProperties(
+  task,
+  {
+    'text': {
+      value: 'New Task'
+    },
+    'dueDate': {
+      value: '1/15/16'
+    }
+  }
+);
+console.log(task.text + ' Due: ' + task.dueDate);
+
+
+'use strict';
+var task = { };
+Object.defineProperties(
+  task,
+  {
+    'text': {
+      value: 'New Task'
+    }
+  }
+);
+var descriptor = Object.getOwnPropertyDescriptor(task, 'text');
+console.log(descriptor);
+
+
+
+</script>

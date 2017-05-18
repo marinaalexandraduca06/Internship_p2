@@ -1,0 +1,17 @@
+function calcTotalPrice(quantity, price) {
+  console.log('Total price: ' + (quantity * price));
+};
+calcTotalPrice(2, 4.00);
+
+function calcTotalPrice(quantity, price, currency) {
+  console.log(currency);
+};
+calcTotalPrice(2, 4.00);
+
+// returning a value from a function
+function calcTotalPrice(quantity, price)
+{
+  return quantity * price;
+};
+var totalPrice = calcTotalPrice(2, 4.00);
+console.log(totalPrice);

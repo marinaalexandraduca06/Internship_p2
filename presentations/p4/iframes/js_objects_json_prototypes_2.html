@@ -1,0 +1,95 @@
+<script>
+
+var project = anyObject;
+project.someFunction();
+// How does javascript locate / resolve someFunction ?
+//  - project.someFunction()
+//  - project.prototype.someFunction()
+//  - project.prototype.prototype.someFunction()
+//  - project.prototype.prototype.prototype.someFunction()
+//  - etc.
+
+///////////////////////////////////////////////////////////////////////////
+// prototype can be accessed with .prototype (not always) or __proto__ ////
+///////////////////////////////////////////////////////////////////////////
+
+
+var project = {
+  name: 'Project Phoenix'
+};
+console.log(project.foo());
+
+// we did not get an error !!!!
+var project = {
+  name: 'Project Phoenix'
+};
+console.log(project.toString());
+
+// Object is a global constructor function
+console.log(typeof Object.prototype);
+
+console.log(typeof Object.prototype.toString);
+
+// project DOES have a prototype, but we do not get access to it using .prototype
+// unless it is a constructor function
+var project = {
+  name: 'Project Phoenix'
+};
+console.log(project.prototype);
+
+var project = {
+  name: 'Project Phoenix'
+};
+console.log(typeof project.__proto__);
+
+// !!!!
+var project = {
+  name: 'Project Phoenix'
+};
+console.log(project.__proto__ === Object);
+
+var project = {
+  name: 'Project Phoenix'
+};
+console.log(project.__proto__ === Object.prototype);
+
+// Setting our own prototype (1)
+function makeNewObject(o) {
+  function F() {};
+  F.prototype = o;
+  return new F();
+}
+var project = {
+  securityLevel: 2
+};
+var newProject = makeNewObject(projectToInheritFrom);
+
+// Setting our own prototype (2)
+var project = {
+  securityLevel: 2
+};
+var secretProject = Object.create(project);
+console.log(secretProject.securityLevel);
+
+// Example of Walking Up The Prototype Chain
+// !!!! outputs function
+var project = {
+  securityLevel: 2
+};
+var secretProject = Object.create(project);
+console.log(typeof secretProject.toString);
+
+var project = {
+  securityLevel: 2
+};
+var secretProject = Object.create(project);
+console.log(secretProject.__proto__ === Object.prototype);
+
+var project = {
+  securityLevel: 2
+};
+var secretProject = Object.create(project);
+console.log(secretProject.__proto__.__proto__ === Object.prototype);
+
+
+</script>

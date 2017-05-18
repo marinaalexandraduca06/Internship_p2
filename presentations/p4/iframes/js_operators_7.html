@@ -1,0 +1,147 @@
+<script>
+
+// !!!!!!
+// true gets converted to a number, 1
+if (true == 1) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// !!!!!!
+// true gets converted to a number, 1
+if (true == 2) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// !!!!!!
+// false gets converted to a number 0
+if (false == 0) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// in js, here the context is numeric, so the string is parsed and gets converted to a number
+// no matter the order
+if (42 == '42') {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+var obj = {
+  valueOf: function () { return 42; }
+}
+if (42 == obj) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// js, in numeric context, first searches for valueOf, then if not found searches for toString
+var obj = {
+  toString: function () { return 42; }
+}
+if (42 == obj) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+var obj = {
+  name: 'Trigger'
+};
+var obj2 = {
+  name: 'Trigger'
+};
+if (obj == obj2) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+var obj = {
+  name: 'Trigger'
+};
+var obj2 = obj;
+if (obj == obj2) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// no conversion, just a rule in js
+if (null == undefined) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// undefined compared to any value is false, except comparing it to null
+if (undefined == 0) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// other rule in js, null compared to anything is false, except comparing it to undefined
+if (null == 0) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+if (NaN == NaN) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// there is also not equal to operator
+if (42 != 'forty-two') {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// is identically equal: compare the value and the type
+if (55 === '55') {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// numbers not objects
+if (55 === 55) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+if (55 !== 55) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+
+</script>

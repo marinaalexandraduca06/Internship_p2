@@ -1,0 +1,24 @@
+function getOrder() {
+// nothing returned
+};
+var order = getOrder();
+console.log(order);
+
+
+// function expression, store function in variable
+var activateOrder = function() {
+  console.log(‘Order activated.’);
+};
+console.log(typeof activateOrder);
+
+var activateOrder = function() {
+  console.log(‘Order activated.’);
+};
+// execute function stored in variable
+activateOrder();
+
+var activateOrder = function() {
+  console.log(‘Order activated.’);
+};
+// simply a reference to the variable, that js can ignore
+activateOrder;

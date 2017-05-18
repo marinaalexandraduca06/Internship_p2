@@ -1,0 +1,42 @@
+<script>
+
+var total = 30 - 20;
+console.log(total);
+
+// tradeoff for speed
+// ! do not rely on fixed result when working with floating point numbers in js
+// do NOT compare with == or === floating point numbers
+var total = 3.8 - 2.1;
+console.log(total);
+
+// fix for previous example
+var total = 3.8 - 2.1;
+console.log(total.toFixed(3));
+
+// difference versus adition
+var total = "300" - "200";
+console.log(total);
+
+var total = "PRD300" - "ITEM200";
+console.log(total);
+
+var total = 300 - undefined;
+console.log(total);
+
+var total = 300 - NaN;
+console.log(total);
+
+var total = 300 - null;
+console.log(total);
+
+// js looks for valueOf in objects, when doing numetic operations
+var obj = {
+  valueOf: function () { return 100; }
+};
+var total = 300 - obj;
+console.log(total);
+
+var total = 300 - "";
+console.log(total);
+
+</script>

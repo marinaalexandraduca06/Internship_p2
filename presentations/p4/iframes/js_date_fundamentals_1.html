@@ -1,0 +1,48 @@
+<script>
+
+var dt = new Date();
+console.log(dt);
+
+// dates are represented as a number of miliseconds starting at January 1st 1070
+var dt = new Date(0);
+console.log(dt);
+
+var dt = new Date('2/13/2015');
+console.log(dt);
+
+var dt = new Date('March 1, 2015');
+console.log(dt);
+
+var dt = new Date('some text');
+console.log(dt);
+
+// parse returns the number of ms
+var dt = Date.parse('Hi Mom!');
+console.log(dt);
+
+var dt = Date.UTC(2000, 0);
+console.log(dt);
+
+// the timezone gets added
+var dt = new Date(Date.UTC(2000, 0));
+console.log(dt);
+
+var dt = Date.now();
+console.log(dt);
+
+// same moment in time as Date.now()
+var dt = new Date();
+console.log(dt.toDateString());
+
+var dt = new Date();
+console.log(dt.toTimeString());
+
+var dt = new Date();
+console.log(dt.getFullYear());
+
+// we can manipulate as we want
+var dt = new Date();
+dt.setFullYear(2025);
+console.log(dt.getFullYear());
+
+</script>

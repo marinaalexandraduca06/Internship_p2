@@ -1,0 +1,102 @@
+<script>
+
+var productId = 'PRD-2000';
+console.log(productId);
+console.log(window.productId);  // in nodejs: global.productId
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+console.log(this === window);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var description = 'hardware product';
+function updateProduct() {
+  // without a var keyword (common bug)
+  description = 'updated product';
+}
+updateProduct();
+console.log(description);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//var description = 'hardware product';
+function updateProduct() {
+  // common bug, in non strict mode: creates a global variabe
+  description = 'updated product';
+}
+updateProduct();
+console.log(description);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'use strict';
+//var description = 'hardware product';
+function updateProduct() {
+  // in strict mode: does NOT create a global variabe, but produces error
+  description = 'updated product';
+}
+updateProduct();
+console.log(description);
+
+
+</script>

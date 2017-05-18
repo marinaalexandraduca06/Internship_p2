@@ -1,0 +1,21 @@
+function cancelOrder(orderId) {
+};
+console.log(typeof cancelOrder);
+
+function printOrder() {
+  console.log(‘Printing order.’);
+};
+printOrder();
+
+function printOrder(orderId) {
+  console.log(‘Printing order: ’ + orderId);
+};
+printOrder(‘9002’);
+
+// 2 passes:
+//  - 1 global variables and declaratians (hoisting)
+//  - 2 execution
+printOrder(‘9002’);
+function printOrder(orderId) {
+  console.log(‘Printing order: ’ + orderId);
+};

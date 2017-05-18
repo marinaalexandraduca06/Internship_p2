@@ -1,0 +1,71 @@
+<script>
+
+'use strict';
+var project = {
+  name: 'Top Secret Project',
+  dueDate: '1/1/2016'
+};
+console.log(project.hasOwnProperty('name'));
+
+
+'use strict';
+var project = {
+  name: 'Top Secret Project',
+  dueDate: '1/1/2016'
+};
+console.log(project.hasOwnProperty('toString'));
+
+
+'use strict';
+var project = {
+  name: 'Top Secret Project',
+  dueDate: '1/1/2016'
+};
+console.log(project.__proto__.hasOwnProperty('toString'));
+
+
+'use strict';
+var project = {
+  name: 'Top Secret Project',
+  dueDate: '1/1/2016'
+};
+console.log(Object.prototype.isPrototypeOf(project));
+
+
+var project = {
+  securityLevel: 2
+};
+var secretProject = Object.create(project);
+console.log(project.isPrototypeOf(secretProject));
+
+// isPrototypeOf will walk the prototype chain;
+// similar to how a derived class is considered to be of type base class,
+//      in languages that support clasical inheritance
+var project = {
+  securityLevel: 2
+};
+var secretProject = Object.create(project);
+console.log(Object.prototype.isPrototypeOf(secretProject));
+
+
+var project = {
+  securityLevel: 2
+};
+var secretProject = Object.create(project);
+console.log("securityLevel" in secretProject);
+
+
+var project = {
+  securityLevel: 2
+};
+var secretProject = Object.create(project);
+console.log("toString" in secretProject);
+
+
+var project = {
+  securityLevel: 2
+};
+var secretProject = Object.create(project);
+console.log("securityLevel" in Object.prototype);
+
+</script>

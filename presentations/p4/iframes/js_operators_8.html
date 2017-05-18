@@ -1,0 +1,94 @@
+<script>
+
+// quickly go over
+      // less than
+      if (55 < 77) {
+        console.log('true');
+      }
+      else {
+        console.log('false');
+      }
+
+      // less than or equal
+      if (55 <= 55) {
+        console.log('true');
+      }
+      else {
+        console.log('false');
+      }
+
+      // greater than
+      if (55 > 55) {
+        console.log('true');
+      }
+      else {
+        console.log('false');
+      }
+
+      // greater than or equal
+      if (55 >= 55) {
+        console.log('true');
+      }
+      else {
+        console.log('false');
+      }
+
+// alphabetical comparison: a is before b
+if ("alpha" < "beta") {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+if ("alpha" < "alph") {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// B's Ascii or Unicode code is before a's code
+if ("Beta" < "alpha") {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// numeric context in most cases
+if ('42' < 55) {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// no conversion takes place, strings are compared as strings
+// 1 comes before 4
+if ('42' < '142') {
+  console.log('true');
+}
+else {
+  console.log('false');
+}
+
+// possible source of bugs
+// nothing gets logged to console
+var total = NaN;
+if (total < 5) {
+  console.log('less than 5');
+}
+if (total >= 5) {
+  console.log('greater than or equal to 5');
+}
+
+// operator precedence
+// see https://developer.mozilla.org/ro/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+var total = 6;
+total *= 4 + 1;
+console.log(total);
+// maybe the purpose of the programmer was
+// (total *= 4) + 1;
+
+</script>

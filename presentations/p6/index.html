@@ -1,0 +1,2832 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>Presentation 6</title>
+
+        <link rel="stylesheet" href="/css/reveal.css" />
+        <link rel="stylesheet" href="/css/theme/white.css" />
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="/lib/css/zenburn.css" />
+
+        <link rel="stylesheet" href="/css/boostrap/bootstrap.css" />
+        <link rel="stylesheet" href="/css/boostrap/bootstrap-theme.css" />
+
+        <link rel="stylesheet" href="/css/prism.js/prism.css" />
+        <link rel="stylesheet" href="/css/custom.css" />
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? '/css/print/pdf.css' : '/css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h3>Overview</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <ul>
+                                <li>New Syntax</li>
+                                <li>ES6 Modules and Classes</li>
+                                <li>New Types and Object Extensions</li>
+                                <li>Iterators, Generators and Promises</li>
+                                <li>Arrays and Collections</li>
+                                <li>The Reflect API</li>
+                                <li>The Proxy API</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3>Compatibility Table</h3>
+                    <h3><a href="https://kangax.github.io/compat-table/es6/" target="_blank">https://kangax.github.io/compat-table/es6/</a></h3>
+                </section>
+                <section>
+                    <h3>New ES6 Syntax</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <ul>
+                                <li>let, const and Block Scoping</li>
+                                <li>Arrow Functions =></li>
+                                <li>Default Function Parameters</li>
+                                <li>Rest and Spread ...</li>
+                                <li>Object Literal Extensions</li>
+                                <li>for ... of Loops</li>
+                                <li>Octal and Binary Literals</li>
+                                <li>Template Literals</li>
+                                <li>Destructuring</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <section>
+                        <h3>let, const and Block Scoping</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    console.log(productId);
+    var productId = 12;
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    console.log(productId);
+    let productId = 12;
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let productId = 12;
+    console.log(productId);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let productId;
+    console.log(productId);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let productId = 12;
+    {
+        let productId = 2000;
+    }
+    console.log(productId);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    {
+        let productId = 2000;
+    }
+    console.log(productId);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    function updateProductId() {
+        productId = 12;
+    }
+    let productId = null;
+    updateProductId();
+    console.log(productId);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let productId = 42;
+    for (let productId = 0; productId < 10; productId++)
+    {
+    }
+    console.log(productId);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let updateFunctions = [];
+    for (var i = 0; i < 2; i++) {
+        updateFunctions.push(function () { return i; });
+    }
+    console.log(updateFunctions[0]());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let updateFunctions = [];
+    for (let i = 0; i < 2; i++) {
+        updateFunctions.push(function () { return i; });
+    }
+    console.log(updateFunctions[0]());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    const MARKUP_PCT = 100;
+    console.log(MARKUP_PCT);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    const MARKUP_PCT;
+    console.log(MARKUP_PCT);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    const MARKUP_PCT = 100;
+    MARKUP_PCT = 10;
+    console.log(MARKUP_PCT);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    const MARKUP_PCT = 100;
+    if (MARKUP_PCT > 0) {
+        const MARKUP_PCT = 10;
+    }
+    console.log(MARKUP_PCT);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Arrow Functions</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getPrice = () => 5.99;
+    console.log(typeof getPrice);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getPrice = () => 5.99;
+    console.log(getPrice());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getPrice = count => count * 4.00;
+    console.log(getPrice(2));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getPrice = (count, tax) => count * 4.00 * (1 + tax);
+    console.log(getPrice(2, .07));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getPrice = (count, tax) => {
+        var price = count * 4.00;
+        price *= (1 + tax);
+        return price;
+    }
+    console.log(getPrice(2, .07));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    document.addEventListener('click', function () {
+        console.log(this);
+    });
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    document.addEventListener('click', () => console.log(this));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var invoice = {
+        number: 123,
+        process: function () {
+            console.log(this);
+        }
+    };
+    invoice.process();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var invoice = {
+        number: 123,
+        process: () => console.log(this)
+    };
+    invoice.process();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var invoice = {
+        number: 123,
+        process: function () {
+            return () => console.log(this.number);
+        }
+    };
+    invoice.process()();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var invoice = {
+        number: 123,
+        process: function () {
+            return () => console.log(this.number);
+        }
+    };
+    var newInvoice = {
+        number: 456
+    };
+    invoice.process().bind(newInvoice)();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var invoice = {
+        number: 123,
+        process: function () {
+            return () => console.log(this.number);
+        }
+    };
+    var newInvoice = {
+        number: 456
+    };
+    invoice.process().call(newInvoice);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getPrice = ()
+        => 5.99;
+    console.log(typeof getPrice);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getPrice = () => 5.99;
+    console.log(getPrice.hasOwnProperty("prototype"));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Default Function Parameters</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getProduct = function(productId = 1000) {
+        console.log(productId);
+    };
+    getProduct();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getProduct = function(productId = 1000, type = 'software') {
+        console.log(productId + ', ' + type);
+    };
+    getProduct(undefined, 'hardware');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getTotal = function(price, tax = price * 0.07 ) {
+        console.log(price + tax);
+    };
+    getTotal(5.00);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var baseTax = 0.07;
+    var getTotal = function(price, tax = price * baseTax ) {
+        console.log(price + tax);
+    };
+    getTotal(5.00);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var generateBaseTax = () => 0.07;
+    var getTotal = function(price, tax = price * generateBaseTax() ) {
+        console.log(price + tax);
+    };
+    getTotal(5.00);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getTotal = function(price, tax = 0.07 ) {
+        console.log(arguments.length);
+    };
+    getTotal(5.00);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getTotal = function(price = adjustment, adjustment = 1.00) {
+        console.log(price + adjustment);
+    };
+    getTotal();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getTotal = function(price = adjustment, adjustment = 1.00) {
+        console.log(price + adjustment);
+    };
+    getTotal(5.00);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var getTotal = new Function("price = 20.00", "return price;");
+    console.log(getTotal());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Rest and Spread</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var showCategories = function (productId, ...categories) {
+        console.log(categories instanceof Array);
+    };
+    showCategories(123, 'search', 'advertising');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var showCategories = function (productId, ...categories) {
+        console.log(categories);
+    };
+    showCategories(123, 'search', 'advertising');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var showCategories = function (productId, ...categories) {
+        console.log(categories);
+    };
+    showCategories(123);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var showCategories = function (productId, ...categories) {
+    };
+    console.log(showCategories.length);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var showCategories = function (productId, ...categories) {
+        console.log(arguments.length);
+    };
+    showCategories(123, 'search', 'advertising');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var showCategories =
+    new Function("...categories", "return categories;");
+    console.log(showCategories('search', 'advertising'));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var prices = [12, 20, 18];
+    var maxPrice = Math.max(...prices);
+    console.log(maxPrice);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var prices = [12, 20, 18];
+    var newPriceArray = [...prices];
+    console.log(newPriceArray);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var newPriceArray = Array(...[,,]);
+    console.log(newPriceArray);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var newPriceArray = [...[,,]];
+    console.log(newPriceArray);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var maxCode = Math.max(..."43210");
+    console.log(maxCode);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var codeArray = ["A", ..."BCD", "E"];
+    console.log(codeArray);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Object Literal Extensions</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var price = 5.99, quantity = 30;
+    var productView = {
+        price,
+        quantity
+    };
+    console.log(productView);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var price = 5.99, quantity = 10;
+    var productView = {
+        price,
+        quantity,
+        calculateValue() {
+            return this.price * this.quantity
+        }
+    };
+    console.log(productView.calculateValue());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var price = 5.99, quantity = 10;
+    var productView = {
+        price: 7.99,
+        quantity: 1,
+        calculateValue() {
+            return this.price * this.quantity
+        }
+    };
+    console.log(productView.calculateValue());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var price = 5.99, quantity = 10;
+    var productView = {
+        price,
+        quantity,
+        "calculate value"() {
+            return this.price * this.quantity
+        }
+    };
+    console.log(productView["calculate value"]());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var field = 'dynamicField'
+    var price = 5.99;
+    var productView = {
+        [field]: price
+    };
+    console.log(productView);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var field = 'dynamicField'
+    var price = 5.99;
+    var productView = {
+        [field + "-001"]: price
+    };
+    console.log(productView);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var method = 'doIt'
+    var productView = {
+        [method + "-001"]() {
+            console.log("in a method");
+        }
+    };
+    productView['doIt-001']();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var ident = 'productId';
+    var productView = {
+        get [ident] () { return true; },
+        set [ident] (value) { }
+    };
+    console.log(productView.productId);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>for ... of Loops</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var categories = ['hardware', 'software', 'vaporware'];
+    for (var item of categories) {
+        console.log(item);
+    }
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var categories = [,,];
+    for (var item of categories) {
+        console.log(item);
+    }
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var codes = "ABCDF";
+    var count = 0;
+    for (var code of codes) {
+        count++;
+    }
+    console.log(count);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Octal and Binary Literals</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var value = 0o10;
+    console.log(value);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var value = 0O10;
+    console.log(value);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var value = 0b10;
+    console.log(value);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    var value = 0B10;
+    console.log(value);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Template Literals</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let invoiceNum = '1350';
+    console.log(`Invoice Number: ${invoiceNum}`);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let invoiceNum = '1350';
+    console.log(`Invoice Number: \${invoiceNum}`);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let message = `A
+    B
+    C`;
+    console.log(message);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let invoiceNum = '1350';
+    console.log(`Invoice Number: ${"INV-" + invoiceNum}`);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    function showMessage(message) {
+        let invoiceNum = '99';
+        console.log(message);
+    }
+    let invoiceNum = '1350';
+    showMessage(`Invoice Number: ${invoiceNum}`);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    function processInvoice(segments) {
+        console.log(segments);
+    }
+    processInvoice `template`;
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    function processInvoice(segments, ...values) {
+        console.log(segments);
+        console.log(values);
+    }
+    let invoiceNum = '1350';
+    let amount = '2000';
+    processInvoice `Invoice: ${invoiceNum} for ${amount}`;
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Destructuring</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let salary = ['32000', '50000', '75000'];
+    let [ low, average, high ] = salary;
+    console.log(average);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let salary = ['32000', '50000'];
+    let [ low, average, high ] = salary;
+    console.log(high);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let salary = ['32000', '50000', '75000'];
+    let [ low, , high ] = salary;
+    console.log(high);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let salary = ['32000', '50000', '75000'];
+    let [ low, ...remaining ] = salary;
+    console.log(remaining);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let salary = ['32000', '50000'];
+    let [ low, average, high = '88000' ] = salary;
+    console.log(high);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let salary = ['32000', '50000', ['88000', '99000'] ];
+    let [low, average, [actualLow, actualHigh]] = salary;
+    console.log(actualLow);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let salary = ['32000', '50000'];
+    let low, average, high;
+    [ low, average, high = '88000' ] = salary;
+    console.log(high);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    function reviewSalary([low, average], high = '88000') {
+        console.log(average);
+    }
+    reviewSalary(['32000', '50000']);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let salary = {
+        low: '32000',
+        average: '50000',
+        high: '75000'
+    };
+    let { low, average, high } = salary;
+    console.log(high);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let salary = {
+        low: '32000',
+        average: '50000',
+        high: '75000'
+    };
+    let { low: newLow, average: newAverage, high: newHigh } = salary;
+    console.log(newHigh);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let salary = {
+        low: '32000',
+        average: '50000',
+        high: '75000'
+    };
+    let newLow, newAverage, newHigh;
+    { low: newLow, average: newAverage, high: newHigh } = salary;
+    console.log(newHigh);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let salary = {
+        low: '32000',
+        average: '50000',
+        high: '75000'
+    };
+    let newLow, newAverage, newHigh;
+    ({ low: newLow, average: newAverage, high: newHigh } = salary);
+    console.log(newHigh);
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let [maxCode, minCode] = 'AZ';
+    console.log(`min: ${minCode} max: ${maxCode}`);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Advanced Destructuring</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let [high, low] = [,];
+    console.log(`high: ${high} low: ${low}`);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let [high, low] = undefined;
+    console.log(`high: ${high} low: ${low}`);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let [high, low] = null;
+    console.log(`high: ${high} low: ${low}`);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    try {
+        let [ high, low, ] = undefined;
+    } catch (e) {
+        console.log(e.name);
+    }
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let [ high, low, ] = [500, 200];
+    console.log(`high: ${high} low: ${low}`);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    for (let [a, b] of [[5, 10]]) {
+        console.log(`${a} ${b}`);
+    }
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let count = 0;
+    for (let [a, b] of [[5, 10]]) {
+        console.log(`${a} ${b}`);
+        count++;
+    }
+    console.log(count);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    try {
+        throw [123, 'message'];
+    }
+    catch ([invoiceNum, errorMessage]) {
+        console.log(`${invoiceNum} ${errorMessage}`);
+    }
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    function getResult() {
+        let high, low;
+        return { high, low } = { high: 500, low: 200 };
+    }
+    console.log(getResult());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    'use strict';
+    let nums = {
+        high: 1000,
+        low: 20,
+        average: 400
+    };
+    let high, low, average;
+    ({ high, low } = { average } = nums);
+    console.log(`${high} ${low} ${average}`);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>ES6 Modules and Classes</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <ul>
+                                    <li>Module Basics</li>
+                                    <li>Named Exports</li>
+                                    <li>Classes</li>
+                                    <li>extends and super</li>
+                                    <li>Constructor Function Properties</li>
+                                    <li>Static Members</li>
+                                    <li>new.target</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Traceur</h3>
+                        <p><a href="https://github.com/google/traceur-compiler" target="_blank">https://github.com/google/traceur-compiler</a></p>
+                        <h3>Module loader</h3>
+                        <p><a href="https://github.com/ModuleLoader/es-module-loader" target="_blank">https://github.com/ModuleLoader/es-module-loader</a></p>
+                    </section>
+                    <section>
+                        <pre style="min-height: 100px;">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script src="traceur.min.js"&gt;&lt;script/&gt;
+        &lt;script src="es6-module-loader-dev.js"&gt;&lt;script/&gt;
+    &lt;/head&gt&gt;
+    &lt;body&gt;
+        &lt;script&gt;
+            System.import('./base.js');
+        &lt;script/&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Module Basics</h3>
+                    </section>
+                    <section>
+                        <div style="overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    console.log('in base.js');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    projectId = 99;
+    console.log('in base.js');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a1').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a1" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    Runtime Error:Variable undefined in strict mode
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import { projectId } from 'module1.js';
+    console.log(projectId);
+
+    // File module1.js:
+    export let projectId = 99;
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a2').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a2" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    99
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import { projectId, projectName } from 'module1.js';
+    console.log(`${projectName} has id: ${projectId}`);
+
+    // File module1.js:
+    export let projectId = 99;
+    export let projectName = 'BuildIt';
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a3').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a3" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    BuildIt has id: 99
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import { projectId as id, projectName } from 'module1.js';
+    console.log(`${projectName} has id: ${id}`);
+
+    // File module1.js:
+    export let projectId = 99;
+    export let projectName = 'BuildIt';
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a4').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a4" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    BuildIt has id: 99
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import { projectId as id, projectName } from 'module1.js';
+    console.log(`${projectName} has id: ${projectId}`);
+
+    // File module1.js:
+    export let projectId = 99;
+    export let projectName = 'BuildIt';
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a5').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a5" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    Runtime error: projectId is undefined
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    console.log('starting in base');
+    import { projectId } from 'module1.js';
+    console.log('ending in base');
+
+    // File module1.js:
+    export let projectId = 99;
+    console.log('in module1');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a6').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a6" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    in module1 <br/>
+                                    starting in base <br/>
+                                    ending in base <br/>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import someValue from 'module1.js';
+    console.log(someValue);
+
+    // File module1.js:
+    export let projectId = 99;
+    let projectName = 'BuildIt';
+    export default projectName;
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a7').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a7" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    BuildIt
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import { default as myProjectName } from 'module1.js';
+    console.log(myProjectName);
+
+    // File module1.js:
+    export let projectId = 99;
+    let projectName = 'BuildIt';
+    export default projectName;
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a8').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a8" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    BuildIt
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import someValue from 'module1.js';
+    console.log(someValue);
+
+    // File module1.js:
+    let projectId = 99;
+    let projectName = 'BuildIt';
+    export { projectId, projectName };
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a9').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a9" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    undefined
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import someValue from 'module1.js';
+    console.log(someValue);
+
+    // File module1.js:
+    let projectId = 99;
+    let projectName = 'BuildIt';
+    export { projectId as default, projectName };
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a10').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a10" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    99
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import * as values from 'module1.js';
+    console.log(values);
+
+    // File module1.js:
+    let projectId = 99;
+    let projectName = 'BuildIt';
+    export { projectId, projectName };
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a11').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a11" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    { projectId: 99, projectName: 'BuildIt'}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Named Exports in Modules</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    File base.js:
+    import { projectId } from 'module1.js';
+    projectId = 8000;
+    console.log(projectId);
+
+    // File module1.js:
+    export let projectId = 99;
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a12').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a12" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    Runtime error: projectId is read-only
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import { project } from 'module1.js';
+    project.projectId = 8000;
+    console.log(project.projectId);
+
+    // File module1.js:
+    export let project = {
+        projectId: 99
+    };
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a13').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a13" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    8000
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import { project, showProject } from 'module1.js';
+    project.projectId = 8000;
+    showProject();
+    console.log(project.projectId);
+
+    // File module1.js:
+    export let project = { projectId: 99 };
+    export function showProject() {
+        console.log(project.projectId);
+    };
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a14').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a14" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    8000<br/>
+                                    8000
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    // File base.js:
+    import { showProject, updateFunction } from 'module1.js';
+    showProject();
+    updateFunction();
+    showProject();
+
+    // File module1.js:
+    export function showProject() { console.log('in original'); }
+    export function updateFunction() {
+        showProject = function () { console.log('in updated'); };
+    };
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                        <div>
+                            <button onclick="document.querySelector('#a15').style = '';" style="font-size: 20px;">Show Answer</button>
+                            <div id="a15" style="display:none">
+                                <div style="padding-top: 40px;color: #690;font-size: 28px;">
+                                    in original<br/>
+                                    in updated
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Class Fundamentals</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Task {
+
+    }
+    console.log(typeof Task);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Task {
+
+    }
+    let task = new Task();
+    console.log(typeof task);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Task {
+
+    }
+    let task = new Task();
+    console.log(task instanceof Task);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Task {
+        showId() {
+            console.log('99');
+        }
+    }
+    let task = new Task();
+    task.showId();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Task {
+        showId() {
+            console.log('99');
+        }
+    }
+    let task = new Task();
+    console.log(task.showId === Task.prototype.showId);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Task {
+        constructor() {
+            console.log('constructing Task');
+        }
+        showId() {
+            console.log('99');
+        }
+    }
+    let task = new Task();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Task {
+        constructor() {
+            console.log('constructing Task');
+        },
+        showId() {
+            console.log('99');
+        }
+    }
+    let task = new Task();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Task {
+        let taskId = 9000;
+        constructor() {
+            console.log('constructing Task');
+        }
+        showId() {
+            console.log('99');
+        }
+    }
+    let task = new Task();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let task = new Task();
+    class Task {
+        constructor() {
+            console.log('constructing Task');
+        }
+    }
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let newClass = class Task {
+        constructor() {
+            console.log('constructing Task');
+        }
+    };
+    new newClass();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let Task = function () {
+        console.log('constructing Task');
+    };
+    let task = {};
+    Task.call(task);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Task {
+        constructor() {
+            console.log('constructing Task');
+        }
+    };
+    let task = {};
+    Task.call(task);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function Project() { };
+    console.log(window.Project === Project);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Task { }
+    console.log(window.Task === Task);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>extends and super</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor() {
+            console.log('constructing Project');
+        }
+    }
+
+    class SoftwareProject extends Project {
+    }
+    let p = new SoftwareProject();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor(name) {
+            console.log('constructing Project: ' + name);
+        }
+    }
+
+    class SoftwareProject extends Project {
+    }
+    let p = new SoftwareProject('Mazatlan');
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor() {
+            console.log('constructing Project');
+        }
+    }
+
+    class SoftwareProject extends Project {
+        constructor() {
+            super();
+            console.log('constructing SoftwareProject');
+        }
+    }
+    let p = new SoftwareProject();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor() {
+            console.log('constructing Project');
+        }
+    }
+
+    class SoftwareProject extends Project {
+        constructor() {
+            // super();
+            console.log('constructing SoftwareProject');
+        }
+    }
+    let p = new SoftwareProject();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        //constructor() {
+        //    console.log('constructing Project');
+        //}
+    }
+
+    class SoftwareProject extends Project {
+        constructor() {
+            // super();
+            console.log('constructing SoftwareProject');
+        }
+    }
+    let p = new SoftwareProject();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        getTaskCount() {
+            return 50;
+        }
+    }
+
+    class SoftwareProject extends Project {
+    }
+
+    let p = new SoftwareProject();
+    console.log(p.getTaskCount());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        getTaskCount() {
+            return 50;
+        }
+    }
+    class SoftwareProject extends Project {
+        getTaskCount() {
+            return 66;
+        }
+    }
+    let p = new SoftwareProject();
+    console.log(p.getTaskCount());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        getTaskCount() {
+            return 50;
+        }
+    }
+    class SoftwareProject extends Project {
+        getTaskCount() {
+            return super.getTaskCount() + 6;
+        }
+    }
+    let p = new SoftwareProject();
+    console.log(p.getTaskCount());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let project = {
+        getTaskCount() { return 50; }
+    };
+
+    let softwareProject = {
+        getTaskCount() {
+            return super.getTaskCount() + 7;
+        }
+    }
+    Object.setPrototypeOf(softwareProject, project);
+    console.log(softwareProject.getTaskCount());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Properties for Class Instances</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor() { this.location = 'Mazatlan'; }
+    }
+    class SoftwareProject extends Project {
+        constructor() {
+            super();
+        }
+    }
+    let p = new SoftwareProject();
+    console.log(p.location);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+
+                        <div style="max-height: 550px; overflow: auto">
+                        <pre style="min-height: 100px;">
+                            <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor() { let location = 'Mazatlan'; }
+    }
+    class SoftwareProject extends Project {
+        constructor() {
+            super();
+        }
+    }
+    let p = new SoftwareProject();
+    console.log(p.location);
+
+                            </code>
+                        </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor() { this.location = 'Mazatlan'; }
+    }
+
+    class SoftwareProject extends Project {
+        constructor() {
+            super();
+            this.location = this.location + ' Beach';
+        }
+    }
+    let p = new SoftwareProject();
+    console.log(p.location);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Static Members</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        static getDefaultId() {
+            return 0;
+        }
+    }
+    console.log(Project.getDefaultId());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        static getDefaultId() {
+            return 0;
+        }
+    }
+    var p = new Project();
+    console.log(p.getDefaultId());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        static let id = 0;
+    }
+    console.log(Project.id);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+    }
+    Project.id = 99;
+    console.log(Project.id);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>new.target</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor() {
+            console.log(typeof new.target);
+        }
+    }
+    var p = new Project();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor() {
+            console.log(new.target);
+        }
+    }
+    var p = new Project();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor() {
+            console.log(new.target);
+        }
+    }
+
+    class SoftwareProject extends Project {
+        constructor() {
+            super();
+        }
+    }
+    var p = new SoftwareProject();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor() {
+            console.log(new.target);
+        }
+    }
+    class SoftwareProject extends Project {
+    }
+
+    var p = new SoftwareProject();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Project {
+        constructor() {
+            console.log(new.target.getDefaultId());
+        }
+    }
+                                    
+    class SoftwareProject extends Project {
+        static getDefaultId() { return 99; }
+    }
+    var p = new SoftwareProject();
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="/lib/js/head.min.js"></script>
+        <script src="/js/reveal.js"></script>
+        <script src="/js/jquery-3.2.1.js"></script>
+        <script src="/js/boostrap/bootstrap.js"></script>
+        <script src="/js/prism.js/prism.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+                width: "100%",
+                height: "100%",
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '/plugin/markdown/marked.js' },
+                    { src: '/plugin/markdown/markdown.js' },
+                    { src: '/plugin/notes/notes.js', async: true },
+                    // { src: '/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>

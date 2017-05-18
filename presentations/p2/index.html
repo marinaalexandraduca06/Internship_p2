@@ -1,0 +1,473 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="/css/reveal.css">
+		<link rel="stylesheet" href="/css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="/lib/css/zenburn.css">
+
+		<link rel="stylesheet" href="/css/boostrap/bootstrap.css">
+		<link rel="stylesheet" href="/css/boostrap/bootstrap-theme.css">
+
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '/css/print/pdf.css' : '/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <section>
+				  <section>WEB developer's tools</section>
+					<section>WebStorm</section>
+					<section>
+            <h3>WebStorm Hads on<small>(see notes)</small></h3>
+            <pre><code>https://www.jetbrains.com/webstorm/</code></pre>
+            <aside class="notes">
+              <ul>
+                <li>download tar.gz</li>
+                <li>after unarchive and launch, create a new empty project in ~/internship/p2</li>
+              </ul>
+						</aside>
+          </section>
+					<section>
+            <h3>Apache</h3>
+            <ol>
+              <li>Install apache</li>
+              <li>Configure virtual host for previously created project in Webstorm <small>see notes</small></li>
+            </ol>
+            <pre><code>
+– add a file
+sudo nano /etc/apache2/sites-enabled/010-p2.anais.me.conf
+&lt;VirtualHost *:80&gt;
+    ServerName  p2.anais.me
+    DocumentRoot /home/andrei/internship/p2
+    &lt;Directory /home/andrei/internship/p2/ &gt;
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+            </code></pre>
+
+            <aside class="notes">
+              <pre><code>
+  – sudo apt-get update
+	– sudo apt-get install apache2
+	– sudo apache2ctl configtest # tests if the config files content is ok
+	– sudo nano /etc/apache2/apache2.conf # add/edit
+		ServerName localhost
+	– sudo apache2ctl configtest # run again to test updated config
+ - configure virtual host for simple project
+   	– add a file
+sudo nano /etc/apache2/sites-enabled/010-p2.anais.me.conf
+   &lt;VirtualHost *:80&gt;
+        ServerName  p2.anais.me
+        DocumentRoot /home/andrei/internship/p2
+        &lt;Directory /home/andrei/internship/p2/ &gt;
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Require all granted
+        &lt;/Directory&gt;
+    &lt;/VirtualHost&gt;
+	– edit hosts file
+sudo nano /etc/hosts
+– restart apache
+sudo service apache2 restart
+– open in browser
+http://p2.anais.me
+              </code></pre>
+						</aside>
+          </section>
+
+        </section>
+
+        <section>
+          <section>
+            <h3>GIT</h3>
+          </section>
+          <section>
+            <h3>GIT - intro</h3>
+            <p>GIT is a Distributed Version Control System</p>
+            <div class="row">
+              <div class = "col-md-4">
+                <p style="font-size:19px">Local Version Control Systems</p>
+                <img src="/images/GIT_history_local.png" />
+              </div>
+              <div class = "col-md-4">
+                <p style="font-size:19px">Centralized Version Control Systems: CVS, Subversion, and Perforce...</p>
+                <img src="/images/GIT_history_centralized.png" />
+              </div>
+              <div class = "col-md-4">
+                <p style="font-size:19px">Distributed Version Control Systems: Git, Mercurial, Bazaar...</p>
+                <img src="/images/GIT_distributed_VCS.png" />
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h3>GIT - The Three States</h3>
+            <img src="/images/GIT_the_3_areas.png" >
+          </section>
+
+          <section>
+            <h3>GIT - Recording Changes to the Repository</h3>
+            <img src="/images/GIT_lifecycle.png" >
+          </section>
+
+          <section>
+            <h3>GIT - Working with Remotes</h3>
+            <pre><code>
+git remote
+    origin
+git remote -v
+    origin	https://github.com/andreidiaconescu/internship_p2.git (fetch)
+    origin	https://github.com/andreidiaconescu/internship_p2.git (push)
+            </code></pre>
+            <p>Adding Remote Repositories</p>
+            <pre><code>
+git remote add pb https://github.com/paulboone/ticgit
+git remote -v
+    origin	https://github.com/schacon/ticgit (fetch)
+    origin	https://github.com/schacon/ticgit (push)
+    pb	https://github.com/paulboone/ticgit (fetch)
+    pb	https://github.com/paulboone/ticgit (push)
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>GIT - Fetch, Pull, Push</h3>
+            <pre><code>
+git fetch [remote-name]
+git fetch origin
+git pull [remote-name] [branch-name]
+git pull origin master
+git push [remote-name] [branch-name]
+git push origin master
+            </code></pre>
+
+          </section>
+
+          <section>
+            <h3>GIT - Branching</h3>
+            <img src="/images/GIT_branch-and-history.png">
+          </section>
+          <section>
+            <h3>GIT - Branching (1)</h3>
+            <div class="row">
+              <div class="col-md-4">
+                <pre><code>
+# create a new branch
+git branch testing
+                </code></pre>
+                <img src="/images/GIT_head-to-master.png">
+              </div>
+              <div class="col-md-4">
+                <pre><code>
+# switching Branches
+git checkout testing
+                </code></pre>
+                <img src="/images/GIT_head-to-testing.png">
+              </div>
+              <div class="col-md-4">
+                <pre><code>
+# make a change and commit
+nano change1.txt
+git add change1.txt
+git commit -m "added change1.txt"
+                </code></pre>
+                <img src="/images/GIT_head-to-testing_extra_commit_over_master.png">
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h3>GIT - Branching(2): Merging(1)</h3>
+            <div class="row">
+              <div class="col-md-5">
+                <p>Situation: how can we get here...</p>
+                <img src="/images/GIT_Hotfix branch based on master.png">
+              </div>
+              <div class="col-md-5">
+                <pre><code>
+git checkout master
+git merge hotfix
+                </code></pre>
+                <img src="/images/GIT_Hotfix branch based on master_merge_1.png">
+              </div>
+
+            </div>
+          </section>
+
+          <section>
+            <h3>GIT - Branching(2): Merging(2)</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <p>Before Merge</p>
+                <img src="/images/GIT_basic-merging-before-basic-merging_1.png">
+              </div>
+              <div class="col-md-6">
+                <p>After Merge</p>
+                <img src="/images/GIT_basic-merging-after-basic-merging_1.png">
+                <pre><code>
+# delete feature branch
+git branch -d iss53
+                </code></pre>
+
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h3>GIT - Branching(3) - Rebasing <small>(see notes)</small></h3>
+            <div class="row">
+              <div class="col-md-6">
+                <p>The Basic Rebase</p>
+                <img src="/images/GIT_basic-merging-1.png">
+              </div>
+              <div class="col-md-6">
+                <p>Branch Rebasing</p>
+                <pre><code>
+git checkout experiment
+git rebase master
+                </code></pre>
+                <img src="/images/GIT_basic-rebase-1.png">
+              </div>
+            </div>
+            <aside class="notes">
+              <p>Branch Rebase process</p>
+              <ul>
+                <li>goes to the common ancestor of the two branches (the one you’re on and the one you’re rebasing onto)</li>
+                <li>gets the diff introduced by each commit of the branch you’re on, save those diffs to temporary files</li>
+                <li>reset the current branch to the same commit as the branch you are rebasing onto</li>
+                <li>finally applies each change in turn</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h3>GIT - Branching - The dangers of Rebasing</h3>
+            <h2>Do not rebase commits that exist outside your repository</h2>
+            <p>explain on previous slide</p>
+          </section>
+
+          <section>
+            <h3>GIT - short handson<small>(see notes)</small></h3>
+            <ul style="font-size: 17px;">
+              <li>
+                install GIT
+              </li>
+              <li>
+                create free account on github, and remember the username/password
+              </li>
+              <li>
+                create a free repo: internship_p2
+              </li>
+              <li>
+                create the readme from web interface to not have any warnings of an empty repo
+              </li>
+              <li>
+                connect it to the project previously created in webstorm: /home/andrei/internship/p2
+              </li>
+              <li>
+                add to staging
+              </li>
+              <li>
+                reset and add to git ignore the IDE specific files .idea
+              </li>
+              <li>
+                git commit
+              </li>
+              <li>
+                git push
+              </li>
+            </ul>
+
+            <aside class="notes">
+              <pre><code>
+– cd /home/andrei/internship/p2/
+– mkdir t1
+– git clone https://github.com/andreidiaconescu/internship_p2.git .
+– mv .git ..
+– cd ..
+– rm t1
+– git add .
+– git status
+# we see that IDE specific files appear .idea/...
+# not ok to push them in git
+# remove the .idea files from GIT STAGING AREA
+– git reset .idea
+– git status
+# we see that .idea files appear as waiting to be added to staging
+# we add .idea files to git ignored files
+– nano .gitignore
+# write into the file
+.idea
+# save and exit
+– git status
+# we see the .idea file “dissappeared” from git status, they are ignored
+– git commit -m "first commit"
+# it asks for email and name
+– git config --global user.email "andrei.diaconescu@anais-digital.com"
+– git config --global user.name "Andrei Diaconescu"
+– git commit -m "first commit"
+– git push origin master
+              </code></pre>
+            </aside>
+
+          </section>
+
+          <section>
+            <h3>GIT - Branching - Merge Conflicts</h3>
+            <p>If you <b>changed</b> the <b>same part</b> of <b>the same file</b> differently in the <b>two branches you’re merging together</b>, Git will <b>not be able to merge them cleanly</b>. </p>
+            <pre><code>
+git merge iss53
+    Auto-merging index.html
+    CONFLICT (content): Merge conflict in index.html
+    Automatic merge failed; fix conflicts and then commit the result
+            </code></pre>
+            <p>
+              Your file with conflict contains a section that looks something like this
+            </p>
+            <pre><code>
+<<<<<<< HEAD:index.html
+<div id="footer">contact : email.support@github.com</div>
+=======
+<div id="footer">
+ please contact us at support@github.com
+</div>
+>>>>>>> iss53:index.html
+            </code></pre>
+
+          </section>
+
+          <section>
+            <h3>GIT - Branching - Fixing Merge Conflicts</h3>
+            <p>Edit the file(s) with conflicts</p>
+            <pre><code>
+              <div id="footer">
+              please contact us at email.support@github.com
+              </div>
+            </code></pre>
+            <p>
+              mark each as resolved
+            </p>
+            <pre><code>
+              git add index.html
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>GIT - Branching - Fixing Merge Conflicts - mergetool</h3>
+            <p>Simple way to use git mergetool</p>
+            <pre><code>
+              git mergetool --tool meld
+            </code></pre>
+            <p><i>Let's generate a merge conflict and resolve it using merge tool <small>see notes</small></i></p>
+
+            <aside class="notes">
+              <pre><code>
+# create one new file in the project /home/andrei/internship/p2/
+cd /home/andrei/internship/p2/
+nano file_for_merge_conflict.txt
+#write in the file
+Readme for my app:
+ - Instruction 1
+ - Instruction 2
+ - Instruction 3
+# save and exit
+# add and commit the new file
+git add file_for_merge_conflict.txt
+git commit -m “added the file for demo of fixing a merge commit using git merge tool”
+# create a new feature branch
+git branch br_feature1
+# switch to the new branch
+git checkout br_feature1
+# edit file file_for_merge_conflict.txt
+nano file_for_merge_conflict.txt
+# alter the first line to this
+ - Instruction 1
+ -- this is what you need to do at first step
+# save and exit
+# add the file and commit
+git add file_for_merge_conflict.txt
+git commit -m "detailed the first instruction from the readme"
+git log -3
+# switch to master branch
+git checkout master
+# edit file file_for_merge_conflict.txt
+nano file_for_merge_conflict.txt
+# alter the first line to this
+ - Instruction 1
+ -- pay attention to the following thing !
+# save and exit
+
+# add the file and commit
+git add file_for_merge_conflict.txt
+git commit -m "added a warning to the first instruction from the readme"
+# merge branch br_feature1 into branch master, PRODUCING A CONFLICT
+git merge br_feature1
+	Auto-merging file_for_merge_conflict.txt
+	CONFLICT (content): Merge conflict in file_for_merge_conflict.txt
+	Automatic merge failed; fix conflicts and then commit the result.
+git status
+# look at the file containing the confict
+nano file_for_merge_conflict.txt
+
+# install meld
+sudo apt-get install meld
+
+# use git merge tool to fix the merge conflicts
+git mergetool --tool meld
+
+
+# delete temp file generated by meld
+rm file_for_merge_conflict.txt.orig
+
+git add file_for_merge_conflict.txt
+git commit -m "fixed conflicts in readme first instruction"
+
+              </code></pre>
+            </aside>
+
+          </section>
+
+        </section>
+
+			</div>
+		</div>
+
+		<script src="/lib/js/head.min.js"></script>
+		<script src="/js/reveal.js"></script>
+		<script src="/js/jquery-3.2.1.js"></script>
+		<script src="/js/boostrap/bootstrap.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+        width: "100%",
+      	height: "100%",
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '/plugin/markdown/marked.js' },
+					{ src: '/plugin/markdown/markdown.js' },
+					{ src: '/plugin/notes/notes.js', async: true },
+					{ src: '/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

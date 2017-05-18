@@ -1,0 +1,40 @@
+<script>
+
+var level = 5;
+console.log(++level);
+
+var level = 5;
+console.log(level++);
+
+// probably a bug
+var level = 5;
+var nextLevel = level++;
+console.log(nextLevel);
+
+var level = 5;
+var nextLevel = --level;
+console.log(nextLevel);
+
+var level = 5;
+var base = 10;
+var nextLevel = level-- * base;
+console.log(nextLevel);
+
+// in numeric context, undefined converts to NaN
+var level;
+console.log(++level);
+
+// in numeric context, null converts to 0
+var level = null;
+console.log(++level);
+
+var value = 9;
+value = +value;
+console.log(value);
+
+// same for -
+var value = 'calc';
+value = +value;
+console.log(value);
+
+</script>

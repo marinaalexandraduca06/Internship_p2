@@ -1,0 +1,1787 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>Presentation 7</title>
+
+        <link rel="stylesheet" href="/css/reveal.css" />
+        <link rel="stylesheet" href="/css/theme/white.css" />
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="/lib/css/zenburn.css" />
+
+        <link rel="stylesheet" href="/css/boostrap/bootstrap.css" />
+        <link rel="stylesheet" href="/css/boostrap/bootstrap-theme.css" />
+
+        <link rel="stylesheet" href="/css/prism.js/prism.css" />
+        <link rel="stylesheet" href="/css/custom.css" />
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? '/css/print/pdf.css' : '/css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h3>New Types and Object Extensions</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <ul>
+                                <li>Symbols</li>
+                                <li>Well -known Symbols</li>
+                                <li>Object Extensions</li>
+                                <li>String Extensions</li>
+                                <li>Number Extensions</li>
+                                <li>Math Extensions</li>
+                                <li>Function Extensions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <section>
+                        <h3>Symbols</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let eventSymbol = Symbol('resize event');
+    console.log(typeof eventSymbol);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let eventSymbol = Symbol('resize event');
+    console.log(eventSymbol.toString());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    const CALCULATE_EVENT_SYMBOL = Symbol('calculate event');
+    console.log(CALCULATE_EVENT_SYMBOL.toString());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let s = Symbol('event');
+    let s2 = Symbol('event');
+    console.log(s === s2);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let s = Symbol.for('event');
+    console.log(s.toString());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let s = Symbol.for('event');
+    let s2 = Symbol.for('event');
+    console.log(s === s2);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let s = Symbol.for('event');
+    let s2 = Symbol.for('event2');
+    console.log(s === s2);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let s = Symbol.for('event');
+    let description = Symbol.keyFor(s);
+    console.log(description);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let article = {
+        title: 'Whiteface Mountain',
+        [Symbol.for('article')]: 'My Article'
+    };
+    let value = article[Symbol.for('article')];
+    console.log(value);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let article = {
+        title: 'Whiteface Mountain',
+        [Symbol.for('article')]: 'My Article'
+    };
+    console.log( Object.getOwnPropertyNames(article) );
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let article = {
+        title: 'Whiteface Mountain',
+        [Symbol.for('article')]: 'My Article'
+    };
+    console.log( Object.getOwnPropertySymbols(article) );
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Well-known Symbols</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let Blog = function () {
+    };
+    let blog = new Blog();
+    console.log( blog.toString() );
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let Blog = function () {
+    };
+    Blog.prototype[Symbol.toStringTag] = 'Blog Class';
+    let blog = new Blog();
+    console.log( blog.toString() );
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let values = [8, 12, 16];
+    console.log([].concat(values));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let values = [8, 12, 16];
+    values[Symbol.isConcatSpreadable] = false;
+    console.log([].concat(values));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let values = [8, 12, 16];
+    let sum = values + 100;
+    console.log(sum);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let values = [8, 12, 16];
+    values[Symbol.toPrimitive] = function (hint) {
+        console.log(hint);
+        return 42;
+    };
+    let sum = values + 100;
+    console.log(sum);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Object Extensions</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let a = {
+        x: 1
+    };
+
+    let b = {
+        y: 2
+    };
+    Object.setPrototypeOf(a, b);
+    console.log(a.y);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let a = { a: 1 }, b = { b: 2 };
+    let target = {};
+    Object.assign(target, a, b);
+    console.log(target);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let a = { a: 1 }, b = { a: 5, b: 2 };
+    let target = {};
+    Object.assign(target, a, b);
+    console.log(target);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let a = { a: 1 }, b = { a: 5, b: 2 };
+    Object.defineProperty(b, 'c', {
+        value: 10,
+        enumerable: false
+    });
+    let target = {};
+    Object.assign(target, a, b);
+    console.log(target);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let a = { a: 1 }, b = { a: 5, b: 2 }, c = { c: 20 };
+    Object.setPrototypeOf(b, c);
+    let target = {};
+    Object.assign(target, a, b);
+    console.log(target);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let amount = NaN;
+    console.log(amount === amount);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let amount = NaN;
+    console.log(Object.is(amount, amount));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let amount = 0, total = -0;
+    console.log(amount === total);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let amount = 0, total = -0;
+    console.log(Object.is(amount, total));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let article = {
+        title: 'Whiteface Mountain',
+        [Symbol.for('article')]: 'My Article'
+    };
+    console.log( Object.getOwnPropertySymbols(article) );
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>String Extensions</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let title = 'Santa Barbara Surf Riders';
+    console.log(title.startsWith('Santa'));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let title = 'Santa Barbara Surf Riders';
+    console.log(title.endsWith('Rider'));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let title = 'Santa Barbara Surf Riders';
+    console.log(title.includes('ba'));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var title = "Surfer's \u{1f3c4} Blog";
+    console.log(title);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var surfer = "\u{1f3c4}";
+    console.log(surfer.length);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var surfer = "\u{1f30a}\u{1f3c4}\u{1f40b}";
+    console.log(Array.from(surfer).length);
+    console.log(surfer);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var title = "Mazatla\u0301n";
+    console.log(title + ' ' + title.length);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var title = "Mazatla\u0301n";
+    console.log(title + ' ' + title.normalize().length);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    var title = "Mazatla\u0301n";
+    console.log(title.normalize().codePointAt(7).toString(16));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(String.fromCodePoint(0x1f3c4));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let title = 'Surfer';
+    let output = String.raw`${title} \u{1f3c4}\n`;
+    console.log(output);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let wave = '\u{1f30a}';
+    console.log(wave.repeat(10));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Number Extensions</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(Number.parseInt === parseInt);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(Number.parseFloat === parseFloat);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let s = 'NaN';
+    console.log(isNaN(s));
+    console.log(Number.isNaN(s));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let s = '8000';
+    console.log(isFinite(s));
+    console.log(Number.isFinite(s));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let sum = 408.2;
+    console.log(Number.isInteger(sum));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(Number.isInteger(NaN));
+    console.log(Number.isInteger(Infinity));
+    console.log(Number.isInteger(undefined));
+    console.log(Number.isInteger(3));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let a = Math.pow(2, 53) - 1;
+    console.log(Number.isSafeInteger(a));
+    a = Math.pow(2, 53);
+    console.log(Number.isSafeInteger(a));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(Number.EPSILON);
+    console.log(Number.MAX_SAFE_INTEGER);
+    console.log(Number.MIN_SAFE_INTEGER);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Math Extensions</h3>
+                    </section>
+                    <section>
+                        <h3>Hyperbolic Functions</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>cosh()</p>
+                                <p>acosh()</p>
+                                <p>sinh()</p>
+                                <p>asinh()</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>tanh()</p>
+                                <p>atanh()</p>
+                                <p>hypot()</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Arithmetic Functions</h3>
+                        <div class="row">
+                            <div class="col-sm-6" style="text-align: left;">
+                                <p>cbrt()</p>
+                                <p>clz32()</p>
+                                <p>expm1()</p>
+                                <p>log2()</p>
+                                <p>log10()</p>
+                                <p>log1p()</p>
+                                <p>imul()</p>
+                            </div>
+                            <div class="col-sm-6" style="text-align: left;">
+                                <p>cube root</p>
+                                <p>count leading zeros (32 bit integers)</p>
+                                <p>equal to exp(x) - 1</p>
+                                <p>log base 2</p>
+                                <p>log base 10</p>
+                                <p>equal to log(x + 1)</p>
+                                <p>32 bit integer multiplication</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Miscellaneous Functions</h3>
+                        <div class="row">
+                            <div class="col-sm-6" style="text-align: left;">
+                                <p>sign()</p>
+                                <p>trunc()</p>
+                                <p>fround()</p>
+                            </div>
+                            <div class="col-sm-6" style="text-align: left;">
+                                <p>the number's sign: 1, -1, 0, -0, NaN</p>
+                                <p>the integer part of a number</p>
+                                <p>round to nearest 32 bit floating-point value</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(Math.sign(0));
+    console.log(Math.sign(-0));
+    console.log(Math.sign(-20));
+    console.log(Math.sign(20));
+    console.log(Math.sign(NaN));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    console.log(Math.trunc(27.1));
+    console.log(Math.trunc(-27.9));
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Function Extensions</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let fn = function calc() {
+        return 0;
+    };
+    console.log(fn.name);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let fn = function() {
+        return 0;
+    };
+    console.log(fn.name);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let fn = function() {
+        return 0;
+    };
+    let newFn = fn;
+    console.log(newFn.name);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    class Calculator {
+        constructor() {
+        }
+        add() {
+        }
+    }
+    let c = new Calculator();
+    console.log(Calculator.name);
+    console.log(c.add.name);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <section>
+                            Function.name isn't writable
+                            but it's configurable with
+                            Object.defineProperty()
+                        </section>
+                    </section>
+                </section>
+                <section>
+                    <h3>Iterators, Generators and Promises</h3>
+                </section>
+                <section>
+                    <section>
+                        <h3>Iterators</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let ids = [9000, 9001, 9002];
+    console.log(typeof ids[Symbol.iterator] );
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let ids = [9000, 9001, 9002];
+    let it = ids[Symbol.iterator]();
+    console.log(it.next());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let ids = [9000, 9001, 9002];
+    let iter = ids[Symbol.iterator]();
+    iter.next();
+    iter.next();
+    console.log(iter.next());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let ids = [9000, 9001, 9002];
+    let iter = ids[Symbol.iterator]();
+    iter.next();
+    iter.next();
+    iter.next();
+    console.log(iter.next());
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let idMaker = {
+        [Symbol.iterator]() {
+            let nextId = 8000;
+            return {
+                next() {
+                    return {
+                        value: nextId++,
+                        done: false
+                    };
+                }
+            };
+        }
+    };
+    let it = idMaker[Symbol.iterator]();
+    console.log(it.next().value);
+    console.log(it.next().value);
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let idMaker = {
+        [Symbol.iterator]() {
+            let nextId = 8000;
+            return {
+                next() {
+                    return {
+                        value: nextId++,
+                        done: false
+                    };
+                }
+            };
+        }
+    };
+
+    for (let v of idMaker) {
+        if (v > 8002) break;
+        console.log(v);
+    }
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let idMaker = {
+        [Symbol.iterator]() {
+            let nextId = 8000;
+            return {
+                next() {
+                    let value = nextId > 8002 ? undefined : nextId++;
+                    let done = !value;
+                    return { value, done };
+                }
+            };
+        }
+    };
+
+    for (let v of idMaker) {
+        console.log(v);
+    }
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let ids = [8000, 8001, 8002];
+
+    function process(id1, id2, id3) {
+        console.log(id3);
+    }
+    process(...ids);
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Generators</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        yield 8000;
+        yield 8001;
+    }
+    let it = process();
+    console.log(it.next());
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        yield 8000;
+        yield 8001;
+    }
+    let it = process();
+    it.next();
+    console.log(it.next());
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        yield 8000;
+        yield 8001;
+    }
+    let it = process();
+    it.next();
+    it.next();
+    console.log(it.next());
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        let nextId = 7000;
+        while(true)
+            yield(nextId++);
+    }
+    let it = process();
+    it.next();
+    console.log(it.next().value);
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        let nextId = 7000;
+
+        while(true)
+            yield(nextId++);
+    }
+    for (let id of process()) {
+        if (id > 7002) break;
+        console.log(id);
+    }
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Yielding in Generators</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        yield 8000;
+    }
+    let it = process();
+    console.log(it.next());
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        yield;
+    }
+    let it = process();
+    console.log(it.next());
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        let result = yield;
+        console.log(`result is ${result}`);
+    }
+
+    let it = process();
+    it.next();
+    it.next(200);
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        let result = yield;
+        console.log(`result is ${result}`);
+    }
+
+    let it = process();
+    it.next();
+    console.log(it.next(200));
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        let newArray = [yield, yield, yield];
+        console.log(newArray[2]);
+    }
+
+    let it = process();
+    it.next();
+    it.next(2);
+    it.next(4);
+    it.next(42);
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        let value = 4 * yield 42;
+        console.log(value);
+    }
+    let it = process();
+    it.next();
+    it.next(10);
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        let value = 4 * (yield 42);
+        console.log(value);
+    }
+
+    let it = process();
+    it.next();
+    it.next(10);
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        yield 42;
+        yield [1,2,3];
+    }
+
+    let it = process();
+    console.log(it.next().value);
+    console.log(it.next().value);
+    console.log(it.next().value);
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        yield 42;
+        yield* [1,2,3];
+    }
+
+    let it = process();
+    console.log(it.next().value);
+    console.log(it.next().value);
+    console.log(it.next().value);
+    console.log(it.next().value);
+    console.log(it.next().value);
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>throw and return</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        try {
+            yield 9000;
+            yield 9001;
+            yield 9002;
+        }
+        catch(e) {
+        }
+    }
+    let it = process();
+    console.log(it.next().value);
+    console.log(it.throw('foo'));
+    console.log(it.next());
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        yield 9000;
+        yield 9001;
+        yield 9002;
+    }
+
+    let it = process();
+    console.log(it.next().value);
+    console.log(it.throw('foo'));
+    console.log(it.next());
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function *process() {
+        yield 9000;
+        yield 9001;
+        yield 9002;
+    }
+
+    let it = process();
+    console.log(it.next().value);
+
+    // Firefox only (currently)
+    console.log(it.return('foo'));
+    console.log(it.next());
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Promises</h3>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function doAsync() {
+        let p = new Promise(function (resolve, reject) {
+            console.log('in promise code');
+            setTimeout(function () {
+                console.log('resolving...');
+                resolve();
+            }, 2000);
+        });
+
+        return p;
+    }
+    let promise = doAsync();
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function doAsync() {
+        let p = new Promise(function (resolve, reject) {
+            console.log('in promise code');
+            setTimeout(function () {
+                console.log('rejecting...');
+                reject();
+            }, 2000);
+        });
+        return p;
+    }
+
+    let promise = doAsync();
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function doAsync() {
+        // returns a Promise, will be rejected
+    }
+
+    doAsync().then(function () {
+        console.log('Fulfilled!');
+    },
+    function () {
+        console.log('Rejected!');
+    });
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function doAsync() {
+        // returns a Promise, will be rejected using:
+        // reject('Database Error');
+    }
+
+    doAsync().then(function (value) {
+        console.log('Fulfilled! ' + value);
+    },
+    function (reason) {
+        console.log('Rejected! ' + reason);
+    });
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function doAsync() {
+        // returns a Promise, will be resolved using:
+        // resolve('OK');
+    }
+
+    doAsync().then(function (value) {
+        console.log('Fulfilled! ' + value);
+    },
+    function (reason) {
+        console.log('Rejected! ' + reason);
+    });
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function doAsync() {
+        // returns a Promise, will be resolved using:
+        // resolve('OK');
+    }
+
+    doAsync().then(function (value) {
+        console.log('Fulfilled! ' + value);
+        return 'For Sure';
+    }).then(function(value) {
+        console.log('Really! ' + value);
+    });
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function doAsync() {
+        // returns a Promise, will be rejected using:
+        // reject('No Go');
+    }
+
+    doAsync().catch(function (reason) {
+        console.log('Error: ' + reason);
+    });
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function doAsync() {
+        let p = new Promise(function (resolve, reject) {
+            console.log('in promise code');
+            setTimeout(function () {
+                resolve( getAnotherPromise() );
+            }, 2000);
+        });
+        return p;
+    }
+
+    doAsync().then(
+        function () { console.log('Ok') },
+        function () { console.log('Nope')
+    });
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function doAsync() {
+        return Promise.resolve('Some String');
+    }
+
+    doAsync().then(
+        function (value) { console.log('Ok: ' + value) },
+        function (reason) { console.log('Nope: ' + reason)}
+    );
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    function doAsync() {
+        return Promise.reject('Some Error');
+    }
+
+    doAsync().then(
+        function (value) { console.log('Ok: ' + value) },
+        function (reason) { console.log('Nope: ' + reason)}
+    );
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let p1 = new Promise(...);
+    let p2 = new Promise(...);
+
+    Promise.all([p1, p2]).then(
+        function (value) { console.log('Ok') },
+        function (reason) { console.log('Nope') }
+    );
+    // assume p1 resolves after 3 seconds,
+    // assume p2 resolves after 5 seconds
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let p1 = new Promise(...);
+    let p2 = new Promise(...);
+
+    Promise.all([p1, p2]).then(
+        function (value) { console.log('Ok') },
+        function (reason) { console.log('Nope') }
+    );
+
+    // assume p1 resolves after 1 second,
+    // assume p2 is rejected after 2 seconds
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let p1 = new Promise(...);
+    let p2 = new Promise(...);
+
+    Promise.race([p1, p2]).then(
+        function (value) { console.log('Ok') },
+        function (reason) { console.log('Nope') }
+    );
+    // assume p1 resolves after 3 second,
+    // assume p2 resolves after 5 seconds
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                    <section>
+                        <div style="max-height: 550px; overflow: auto">
+                            <pre style="min-height: 100px;">
+                                <code class="language-js" data-trim data-noescape>
+
+    let p1 = new Promise(...);
+    let p2 = new Promise(...);
+
+    Promise.race([p1, p2]).then(
+        function (value) { console.log('Ok') },
+        function (reason) { console.log('Nope') }
+    );
+    // assume p1 is rejected after 3 second,
+    // assume p2 resolves after 5 seconds
+
+
+                                </code>
+                            </pre>
+                        </div>
+                        <p>What is the output in the console?</p>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="/lib/js/head.min.js"></script>
+        <script src="/js/reveal.js"></script>
+        <script src="/js/jquery-3.2.1.js"></script>
+        <script src="/js/boostrap/bootstrap.js"></script>
+        <script src="/js/prism.js/prism.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+                width: "100%",
+                height: "100%",
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '/plugin/markdown/marked.js' },
+                    { src: '/plugin/markdown/markdown.js' },
+                    { src: '/plugin/notes/notes.js', async: true },
+                    // { src: '/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
